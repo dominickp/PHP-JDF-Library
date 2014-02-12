@@ -13,6 +13,7 @@ class JDF
 		$Id = 'rootNodeId';
 		$Status = 'Waiting';
 		$JobPartId = '000.cdp.797';
+		// Acceptable types: Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting, PostPress, 		PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation, RIPing, WebPrinting
 		$Types = 'DigitalPrinting';
 		$DescriptiveName = 'PHPJDFTicket';
 		$Version = '1.2';
