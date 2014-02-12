@@ -11,6 +11,9 @@ $JDF = new CreateJDF('MyTestJDF', 'DigitalPrinting');
 // Set a comment
 $JDF->setComment("Test comment");
 
+// Set substrate
+$JDF->setMedia("Substrate Name 1");
+
 // Call the CreateJDF method
 $created = $JDF->CreateJDF();
 

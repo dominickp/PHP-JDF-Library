@@ -5,6 +5,10 @@ class CreateJDF
 
 	public $JDFInitialize;
 
+    public $ResourcePool;
+
+    public $ResourceLinkPool;
+
 	public function __construct($DescriptiveName, $Types)
 	{
 
@@ -37,12 +41,25 @@ class CreateJDF
         $Comments->addAttribute("AgentName", "PHP-JDF-LIbrary");
         $Comments->addAttribute("TimeStamp", date("Y-m-d H:i:s"));
 
+        // Add children that we will need regardless
+        $this->ResourcePool = $this->JDFInitialize->addChild("ResourcePool");
+        $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
+
 	}
 
     public function setComment($comment)
     {
         $Comments = $this->JDFInitialize->addChild('Comment', "$comment");
         $Comments->addAttribute("Name", "GeneralComments");
+    }
+
+    public function setMedia($SubstrateName)
+    {
+        $Media = $this->ResourcePool->addChild("Media");
+        $Media->addAttribute("Class", "Consumable");
+        $Media->addAttribute("ID", "M001");
+        $Media->addAttribute("Status", "Available");
+        $Media->addAttribute("DescriptiveName", "$SubstrateName");
     }
 
 	public function CreateJDF()
