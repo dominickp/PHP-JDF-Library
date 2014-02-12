@@ -1,6 +1,6 @@
 <?php
 
-include('JDF.php');
+include 'JDF/JDF.php';
 
 $JDF = new JDF();
 $created = $JDF->CreateJDF();
