@@ -84,9 +84,9 @@ class CreateJDF
 		$Component->addAttribute("ComponentType", $ComponentType);
 	}
 
-	public function setComment($comment)
+	public function setComment($Comment)
     {
-        $Comments = $this->JDFInitialize->addChild('Comment', $comment);
+        $Comments = $this->JDFInitialize->addChild('Comment', $Comment);
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
@@ -136,6 +136,13 @@ class CreateJDF
 		$FileSpec->addAttribute("URL", $URL);
 		// Return the final file destination that the print device will be looking for
 		return $URL;
+	}
+
+	public function setCustomerInfo($BillingCode, $CustomerID)
+	{
+		$CustomerInfo = $this->JDFInitialize->addChild("CustomerInfo");
+		$CustomerInfo->addAttribute("BillingCode", $BillingCode);
+		$CustomerInfo->addAttribute("CustomerID", $CustomerID);
 	}
 
 	public function getXML()

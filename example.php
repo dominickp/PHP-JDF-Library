@@ -21,6 +21,9 @@ $URL = $JDF->setFile($InputLocation.$MyFile);
 // Determines the location of the job, whether held in print queue or direct to print. Default is queue.
 $JDF->setDevice();
 
+// Set some customer information for HP Indigo billing
+$JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
+
 $created = $JDF->getXML(); // Call the getXML method
 
 Header('Content-type: text/xml');
