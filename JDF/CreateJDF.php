@@ -102,6 +102,18 @@ class CreateJDF
 		$MediaRef->addAttribute("rRef", $MediaID);
     }
 
+	public function setDevice($IDUsage="QueueDestination", $IDValue="Held", $Class="Implementation", $ID="D001", $Status="Available")
+	{
+		$Device = $this->ResourcePool->addChild("Device");
+		$Device->addAttribute("Class", $Class);
+		$Device->addAttribute("ID", $ID);
+		$Device->addAttribute("Status", $Status);
+
+		$GeneralID = $Device->addChild("GeneralID");
+		$GeneralID->addAttribute("IDUsage", $IDUsage);
+		$GeneralID->addAttribute("IDValue", $IDValue);
+	}
+
 	public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
 	{
 		$RunList = $this->ResourcePool->addChild("RunList");
@@ -125,7 +137,7 @@ class CreateJDF
 		// Return the final file destination that the print device will be looking for
 		return $URL;
 	}
-	
+
 	public function getXML()
 	{
         $ReturnXML = $this->JDFInitialize->asXML();
