@@ -13,6 +13,8 @@ class CreateJDF
 
 	public $FileDirectory;
 
+	public $Params;
+
 	public function __construct($DescriptiveName, $Types)
 	{
 		global $UltimateFileDestination;
@@ -47,9 +49,39 @@ class CreateJDF
         $Comments->addAttribute("TimeStamp", date("Y-m-d H:i:s"));
 
         // Add children that we will need regardless
-        $this->ResourcePool = $this->JDFInitialize->addChild("ResourcePool");
-        $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
+		$this->setResourcePool();
+		$this->setResourceLinkPool();
+		// Build out the params child
+		$this->setParams($Types);
+		// Build out the component child
+		$this->setComponent();
+	}
 
+	public function setResourcePool()
+	{
+		$this->ResourcePool = $this->JDFInitialize->addChild("ResourcePool");
+	}
+
+	public function setResourceLinkPool()
+	{
+		$this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
+	}
+
+	public function setParams($Types, $Class="Parameter", $ID="DPP001", $Status="Available")
+	{
+		$this->Params = $this->ResourcePool->addChild($Types."Params");
+		$this->Params->addAttribute("Class", $Class);
+		$this->Params->addAttribute("ID", $ID);
+		$this->Params->addAttribute("Status", $Status);
+	}
+
+	public function setComponent($Class="Quantity", $ID="Component", $Status="Unavailable", $ComponentType="FinalProduct")
+	{
+		$Component = $this->ResourcePool->addChild("Component");
+		$Component->addAttribute("Class", $Class);
+		$Component->addAttribute("ID", $ID);
+		$Component->addAttribute("Status", $Status);
+		$Component->addAttribute("ComponentType", $ComponentType);
 	}
 
     public function setComment($comment)
@@ -58,13 +90,16 @@ class CreateJDF
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
-    public function setMedia($SubstrateName)
+    public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
     {
         $Media = $this->ResourcePool->addChild("Media");
         $Media->addAttribute("Class", "Consumable");
-        $Media->addAttribute("ID", "M001");
-        $Media->addAttribute("Status", "Available");
+        $Media->addAttribute("ID", $MediaID);
+        $Media->addAttribute("Status", $Status);
         $Media->addAttribute("DescriptiveName", $SubstrateName);
+		// Set the linked Params media reference
+		$MediaRef = $this->Params->addChild("MediaRef");
+		$MediaRef->addAttribute("rRef", $MediaID);
     }
 
 	public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
@@ -90,6 +125,7 @@ class CreateJDF
 		// Return the final file destination that the print device will be looking for
 		return $URL;
 	}
+	
 	public function getXML()
 	{
         $ReturnXML = $this->JDFInitialize->asXML();
