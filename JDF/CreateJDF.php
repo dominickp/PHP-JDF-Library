@@ -7,9 +7,9 @@ class CreateJDF
 
 	public $JDFInitialize;
 
-    public $ResourcePool;
+	public $ResourcePool;
 
-    public $ResourceLinkPool;
+	public $ResourceLinkPool;
 
 	public $FileDirectory;
 
@@ -21,7 +21,7 @@ class CreateJDF
 		$this->FileDirectory = $UltimateFileDestination;
 
 		// These are used to generate the initial XML field attributes
-        $XMLEncoding = '<?xml version="1.0" encoding="UTF-8"?>';
+		$XMLEncoding = '<?xml version="1.0" encoding="UTF-8"?>';
 		$JDFType = 'Combined';
 		$XMLNS = 'http://www.CIP4.org/JDFSchema_1_1';
 		$Id = 'rootNodeId';
@@ -84,13 +84,13 @@ class CreateJDF
 		$Component->addAttribute("ComponentType", $ComponentType);
 	}
 
-    public function setComment($comment)
+	public function setComment($comment)
     {
         $Comments = $this->JDFInitialize->addChild('Comment', $comment);
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
-    public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
+	public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
     {
         $Media = $this->ResourcePool->addChild("Media");
         $Media->addAttribute("Class", "Consumable");
@@ -143,6 +143,5 @@ class CreateJDF
         $ReturnXML = $this->JDFInitialize->asXML();
         return $ReturnXML;
 	}
-
 
 }
