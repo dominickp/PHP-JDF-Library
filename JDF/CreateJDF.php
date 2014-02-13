@@ -67,10 +67,15 @@ class CreateJDF
         $Media->addAttribute("DescriptiveName", $SubstrateName);
     }
 
-	public function setFile($LocalFile)
+	public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
 	{
 		$RunList = $this->ResourcePool->addChild("RunList");
+		$RunList->addAttribute("ID", $RunListID);
+		$RunList->addAttribute("Status", $Status);
+		$RunList->addAttribute("Class", 'Parameter');
+
 		$LayoutElement = $RunList->addChild("LayoutElement");
+
 		$FileSpec = $LayoutElement->addChild("FileSpec");
 
 		// Get MIME type of file passed through
