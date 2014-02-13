@@ -1,5 +1,7 @@
 <?php
 
+include 'parameters.php';
+
 class CreateJDF
 {
 
@@ -9,9 +11,12 @@ class CreateJDF
 
     public $ResourceLinkPool;
 
+	public $FileDirectory;
+
 	public function __construct($DescriptiveName, $Types)
 	{
-
+		global $UltimateFileDestination;
+		$this->FileDirectory = $UltimateFileDestination;
 
 		// These are used to generate the initial XML field attributes
         $XMLEncoding = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -49,7 +54,7 @@ class CreateJDF
 
     public function setComment($comment)
     {
-        $Comments = $this->JDFInitialize->addChild('Comment', "$comment");
+        $Comments = $this->JDFInitialize->addChild('Comment', $comment);
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
@@ -59,13 +64,32 @@ class CreateJDF
         $Media->addAttribute("Class", "Consumable");
         $Media->addAttribute("ID", "M001");
         $Media->addAttribute("Status", "Available");
-        $Media->addAttribute("DescriptiveName", "$SubstrateName");
+        $Media->addAttribute("DescriptiveName", $SubstrateName);
     }
 
-	public function CreateJDF()
+	public function setFile($LocalFile)
+	{
+		$RunList = $this->ResourcePool->addChild("RunList");
+		$LayoutElement = $RunList->addChild("LayoutElement");
+		$FileSpec = $LayoutElement->addChild("FileSpec");
+
+		// Get MIME type of file passed through
+		if(!file_exists($LocalFile)) throw new Exception("[$LocalFile] cannot be found and therefore the MIME type cannot be determined.");
+		$FileInfo = finfo_open(FILEINFO_MIME_TYPE);
+		$MIMEType = finfo_file($FileInfo, $LocalFile);
+		finfo_close($FileInfo);
+		$FileSpec->addAttribute("MimeType", $MIMEType);
+
+		$URL = $this->FileDirectory.basename($LocalFile);
+		$FileSpec->addAttribute("URL", $URL);
+		// Return the final file destination that the print device will be looking for
+		return $URL;
+	}
+	public function getXML()
 	{
         $ReturnXML = $this->JDFInitialize->asXML();
         return $ReturnXML;
 	}
+
 
 }

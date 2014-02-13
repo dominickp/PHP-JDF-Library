@@ -1,6 +1,7 @@
 <?php
 
-# I'll need this http://www.cip4.org/documents/jdf_specifications/html/Structure_of_JDF_Nodes.html
+// Include the parameters
+include 'parameters.php';
 
 // Include the JDF class
 include 'JDF/CreateJDF.php';
@@ -14,8 +15,14 @@ $JDF->setComment("Test comment");
 // Set substrate
 $JDF->setMedia("Substrate Name 1");
 
-// Call the CreateJDF method
-$created = $JDF->CreateJDF();
+
+// Input the file
+$MyFile = 'example_image.jpg';
+$JDF->setFile($InputLocation.$MyFile);
+
+
+// Call the getXML method
+$created = $JDF->getXML();
 
 Header('Content-type: text/xml');
 
