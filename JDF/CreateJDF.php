@@ -6,27 +6,16 @@ class CreateJDF
 {
 
     public $JDFInitialize;
-
     public $ResourcePool;
-
     public $ResourceLinkPool;
-
     public $FileDirectory;
-
     public $Params;
-
     public $MediaID;
-
     public $Types;
-
     public $ParamID;
-
     public $RunListID;
-
     public $ComponentID;
-
     public $DeviceID;
-
     public $LayoutID;
 
     public function __construct($DescriptiveName, $Types)
@@ -75,26 +64,7 @@ class CreateJDF
         $this->ResourcePool = $this->JDFInitialize->addChild("ResourcePool");
     }
 
-    public function setResourceLinkPool()
-    {
-        // Initiate the link pool
-        $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
-
-        // Set MediaLink
-        if(!empty($this->MediaID)){
-            $MediaLink = $this->ResourceLinkPool->addChild("MediaLink");
-            $MediaLink->addAttribute("rRef", $this->MediaID);
-            $MediaLink->addAttribute("Usage", "Input");
-        }
-        // Set DigitalPrintingParamsLink
-        if(!empty($this->ParamID)){
-            $MediaLink = $this->ResourceLinkPool->addChild($this->Types."ParamsLink");
-            $MediaLink->addAttribute("rRef", $this->ParamID);
-            $MediaLink->addAttribute("Usage", "Input");
-        }
-    }
-
-    public function setParams($Types, $Class="Parameter", $ID="DPP001", $Status="Available")
+    public function setParams($Types, $Class = "Parameter", $ID = "DPP001", $Status = "Available")
     {
         // Save ParamID for link pool later
         $this->ParamID = $ID;
@@ -107,7 +77,7 @@ class CreateJDF
         $this->Params->addAttribute("Status", $Status);
     }
 
-    public function setComponent($Class="Quantity", $ID="Component", $Status="Unavailable", $ComponentType="FinalProduct")
+    public function setComponent($Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
     {
         // Save ComponentID for later
         $this->ComponentID = $ID;
@@ -125,7 +95,7 @@ class CreateJDF
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
-    public function setMedia($SubstrateName, $MediaID='M001', $Status='Available')
+    public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
     {
         // Save Media ID for later functions
         $this->MediaID = $MediaID;
@@ -140,7 +110,7 @@ class CreateJDF
         $MediaRef->addAttribute("rRef", $MediaID);
     }
 
-    public function setDevice($IDUsage="QueueDestination", $IDValue="Held", $Class="Implementation", $ID="D001", $Status="Available")
+    public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $Class = "Implementation", $ID = "D001", $Status = "Available")
     {
         // Used in resource link pool
         $this->DeviceID = $ID;
@@ -155,7 +125,7 @@ class CreateJDF
         $GeneralID->addAttribute("IDValue", $IDValue);
     }
 
-    public function setLayoutPreparationParams($Sides="OneSidedFront", $ImpositionTemplateURL=null, $ID="LPP001", $Status="Available", $Class="Parameter")
+    public function setLayoutPreparationParams($Sides = "OneSidedFront", $ImpositionTemplateURL = null, $ID = "LPP001", $Status = "Available", $Class = "Parameter")
     {
         $this->LayoutID = $ID;
 
@@ -213,6 +183,25 @@ class CreateJDF
     public function flush()
     {
         $this->setResourceLinkPool();
+    }
+
+    public function setResourceLinkPool()
+    {
+        // Initiate the link pool
+        $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
+
+        // Set MediaLink
+        if (!empty($this->MediaID)) {
+            $MediaLink = $this->ResourceLinkPool->addChild("MediaLink");
+            $MediaLink->addAttribute("rRef", $this->MediaID);
+            $MediaLink->addAttribute("Usage", "Input");
+        }
+        // Set DigitalPrintingParamsLink
+        if (!empty($this->ParamID)) {
+            $MediaLink = $this->ResourceLinkPool->addChild($this->Types . "ParamsLink");
+            $MediaLink->addAttribute("rRef", $this->ParamID);
+            $MediaLink->addAttribute("Usage", "Input");
+        }
     }
 
     public function getXML()
