@@ -85,5 +85,41 @@ This is intended to be a collection of PHP classes which can be used to create a
  $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
  ```
 
+### Example Output (as of 2/13)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" Type="Combined" ID="rootNodeId" Status="Waiting" JobPartID="000.cdp.797" Version="1.3" Types="DigitalPrinting" DescriptiveName="MyTestJDF">
+	<AuditPool>
+		<Created AgentName="PHP-JDF-LIbrary" TimeStamp="2014-02-14 04:29:33"/>
+	</AuditPool>
+	<ResourcePool>
+		<DigitalPrintingParams Class="Parameter" ID="DPP001" Status="Available">
+			<MediaRef rRef="M001"/>
+		</DigitalPrintingParams>
+		<Component Class="Quantity" ID="Component" Status="Unavailable" ComponentType="FinalProduct"/>
+		<Media Class="Consumable" ID="M001" Status="Available" DescriptiveName="Substrate Name 1"/>
+		<RunList ID="RunList_1" Status="Available" Class="Parameter">
+			<LayoutElement>
+				<FileSpec MimeType="image/jpeg" URL="FILE://hppro01-sm1/Jobs/example_image.jpg"/>
+			</LayoutElement>
+		</RunList>
+		<Device Class="Implementation" ID="D001" Status="Available">
+			<GeneralID IDUsage="QueueDestination" IDValue="Held"/>
+		</Device>
+		<LayoutPreparationParams Class="Parameter" ID="LPP001" Status="Available" Sides="TwoSidedFlipY">
+			<ExternalImpositionTemplate>
+				<FileSpec URL="urn:8_up_postcards"/>
+			</ExternalImpositionTemplate>
+		</LayoutPreparationParams>
+	</ResourcePool>
+	<Comment Name="GeneralComments">Test comment</Comment>
+	<CustomerInfo BillingCode="MyJobNumber" CustomerID="MyCustomer"/>
+	<ResourceLinkPool>
+		<MediaLink rRef="M001" Usage="Input"/>
+		<DigitalPrintingParamsLink rRef="DPP001" Usage="Input"/>
+	</ResourceLinkPool>
+</JDF>
+```
+
 ### JDF Spec
 I'm using this as a reference: http://www.cip4.org/documents/jdf_specifications/html/Structure_of_JDF_Nodes.html
