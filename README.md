@@ -4,17 +4,16 @@ This is intended to be a collection of PHP classes which can be used to create a
 
 ## Creating a JDF
 ### Required Methods
-1. Load the CreateJDF class in PHP and then create an instance of it.
 
+1. Load the CreateJDF class in PHP and then create an instance of it.
  ```php
  $JDF = new CreateJDF('MyJobName', 'DigitalPrinting');
  ```
  a. The two required parameters are job name and process name, both as strings.
 
  b. Valid processes are one of the following:
-
   - Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting, PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation. RIPing, WebPrinting
- 
+
 2. Set your file with setFile()
  ```php
  $URL = $JDF->setFile($InputLocation.$MyFile);
