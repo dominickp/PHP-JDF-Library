@@ -59,7 +59,31 @@ This is intended to be a collection of PHP classes which can be used to create a
  $JDF->setMedia("Substrate Name 1");
  ```
  a. This has to match the substrate name as found on the press/DFE exactly for it to show up on press.
+ 
+- Set the job location. This tells the press/DFE if the job should be helf in the DFE queue, print queue, or even to print automatically. 
 
+ ```php
+ $JDF->setDevice('QueueDestination', 'Held');
+ ```
+ a. Default settings (specifying no parameters) will send the job to be held in the print queue.
+ 
+ b. I think these values might be implimentation (HP) specific, so I'll need to determine all of the possible options and then modify this function to throw an exception in case of a bad value.
+ 
+- Choose a tumble setting and imposition template
+
+ ```php
+ $JDF->setLayoutPreparationParams('TwoSidedFlipY', 'urn:8_up_postcards');
+ ```
+ a. Tumble setting must be one of the following
+ 
+  - OneSidedBackFlipX, OneSidedBackFlipY, OneSidedFront, TwoSidedFlipX, TwoSidedFlipY
+ 
+ b. The external imposition template is an optional parameter and it must be the complete location of the imposition template, where the print device/DFE can locate it.
+ 
+- Set billing code and customer
+ ```php
+ $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
+ ```
 
 ### JDF Spec
 I'm using this as a reference: http://www.cip4.org/documents/jdf_specifications/html/Structure_of_JDF_Nodes.html
