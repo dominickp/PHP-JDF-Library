@@ -13,7 +13,7 @@ This is intended to be a collection of PHP classes which can be used to create a
 
  b. Valid processes are one of the following:
 
- - Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting, PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation. RIPing, WebPrinting
+  - Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting, PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation. RIPing, WebPrinting
  
 2. Set your file with setFile()
  ```php
