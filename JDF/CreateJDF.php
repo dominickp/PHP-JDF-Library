@@ -114,6 +114,26 @@ class CreateJDF
 		$GeneralID->addAttribute("IDValue", $IDValue);
 	}
 
+    public function setLayoutPreparationParams($Sides="OneSidedFront", $ImpositionTemplateURL=null, $ID="LPP001", $Status="Available", $Class="Parameter")
+	{
+        // Check to make sure the selected Sides variable is an OK JDF value
+        $AcceptableTypes = array('OneSidedBackFlipX', 'OneSidedBackFlipY', 'OneSidedFront', 'TwoSidedFlipX', 'TwoSidedFlipY');
+        if(!in_array($Sides, $AcceptableTypes)) throw new Exception("[$Sides] is not an acceptable JDF EnumSides value.");
+
+        $LayoutPreparationParams = $this->ResourcePool->addChild("LayoutPreparationParams");
+        $LayoutPreparationParams->addAttribute("Class", $Class);
+        $LayoutPreparationParams->addAttribute("ID", $ID);
+        $LayoutPreparationParams->addAttribute("Status", $Status);
+        $LayoutPreparationParams->addAttribute("Sides", $Sides);
+
+        if(!empty($ImpositionTemplateURL))
+        {
+            $ExternalImpositionTemplate = $LayoutPreparationParams->addChild("ExternalImpositionTemplate");
+            $FileSpec = $ExternalImpositionTemplate->addChild("FileSpec");
+            $FileSpec->addAttribute("URL", $ImpositionTemplateURL);
+        }
+	}
+
 	public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
 	{
 		$RunList = $this->ResourcePool->addChild("RunList");

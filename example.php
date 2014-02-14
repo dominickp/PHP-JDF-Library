@@ -21,6 +21,11 @@ $URL = $JDF->setFile($InputLocation.$MyFile);
 // Determines the location of the job, whether held in print queue or direct to print. Default is queue.
 $JDF->setDevice();
 
+// Set the tumble of the job and an optional imposition template
+$Tumble = "TwoSidedFlipY";
+$ExternalImpositionURL = "urn:8_up_postcards";
+$JDF->setLayoutPreparationParams($Tumble, $ExternalImpositionURL);
+
 // Set some customer information for HP Indigo billing
 $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
 
