@@ -22,19 +22,21 @@ This is intended to be a collection of PHP classes which can be used to create a
  a. This method requires the path to the local, readable, file. The final is needed locally so the mimetype can be found.
  
  b. This method will return the destination URL. Meaning, the URL the art file is expected to be, where the print device can look for the file on its local system. This means that you will have to move or copy the file from where PHP has access to it to a destination where the print device (DFE in the Indigo's case) can access it.
- 
-3. Finalize with flush()
-```php
-$JDF->flush();
-```
+
+3. Call any optional methods
+
+4. Finalize with flush()
+ ```php
+ $JDF->flush();
+ ```
  a. This method completes the JDF and prepares it for output.
  
  b. Any optional methods should be called before flush().
  
 4. Output! 
-```php
-$rawXML = $JDF->getXML();
-```
+ ```php
+ $rawXML = $JDF->getXML();
+ ```
  a. I will have another method for creating the .JDF file automatically, but for now this will put the XML in a variable.
  
  b. You can set the following to output the XML properly on a PHP page:
@@ -43,6 +45,21 @@ $rawXML = $JDF->getXML();
  Header('Content-type: text/xml');
  print_r($rawXML);
  ```
+
+### Optional Methods
+
+- Set comments
+
+ ```php
+ $JDF->setComment("Test comment");
+ ```
+ 
+- Assign a substrate/media
+ ```php
+ $JDF->setMedia("Substrate Name 1");
+ ```
+ a. This has to match the substrate name as found on the press/DFE exactly for it to show up on press.
+
 
 ### JDF Spec
 I'm using this as a reference: http://www.cip4.org/documents/jdf_specifications/html/Structure_of_JDF_Nodes.html
