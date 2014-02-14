@@ -15,6 +15,20 @@ class CreateJDF
 
     public $Params;
 
+    public $MediaID;
+
+    public $Types;
+
+    public $ParamID;
+
+    public $RunListID;
+
+    public $ComponentID;
+
+    public $DeviceID;
+
+    public $LayoutID;
+
     public function __construct($DescriptiveName, $Types)
     {
         global $UltimateFileDestination;
@@ -50,7 +64,6 @@ class CreateJDF
 
         // Add children that we will need regardless
         $this->setResourcePool();
-        $this->setResourceLinkPool();
         // Build out the params child
         $this->setParams($Types);
         // Build out the component child
@@ -64,19 +77,41 @@ class CreateJDF
 
     public function setResourceLinkPool()
     {
+        // Initiate the link pool
         $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
+
+        // Set MediaLink
+        if(!empty($this->MediaID)){
+            $MediaLink = $this->ResourceLinkPool->addChild("MediaLink");
+            $MediaLink->addAttribute("rRef", $this->MediaID);
+            $MediaLink->addAttribute("Usage", "Input");
+        }
+        // Set DigitalPrintingParamsLink
+        if(!empty($this->ParamID)){
+            $MediaLink = $this->ResourceLinkPool->addChild($this->Types."ParamsLink");
+            $MediaLink->addAttribute("rRef", $this->ParamID);
+            $MediaLink->addAttribute("Usage", "Input");
+        }
     }
 
-    public function setParams($Types, $Class = "Parameter", $ID = "DPP001", $Status = "Available")
+    public function setParams($Types, $Class="Parameter", $ID="DPP001", $Status="Available")
     {
+        // Save ParamID for link pool later
+        $this->ParamID = $ID;
+        // Also need the Type
+        $this->Types = $Types;
+
         $this->Params = $this->ResourcePool->addChild($Types . "Params");
         $this->Params->addAttribute("Class", $Class);
         $this->Params->addAttribute("ID", $ID);
         $this->Params->addAttribute("Status", $Status);
     }
 
-    public function setComponent($Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
+    public function setComponent($Class="Quantity", $ID="Component", $Status="Unavailable", $ComponentType="FinalProduct")
     {
+        // Save ComponentID for later
+        $this->ComponentID = $ID;
+
         $Component = $this->ResourcePool->addChild("Component");
         $Component->addAttribute("Class", $Class);
         $Component->addAttribute("ID", $ID);
@@ -90,8 +125,11 @@ class CreateJDF
         $Comments->addAttribute("Name", "GeneralComments");
     }
 
-    public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
+    public function setMedia($SubstrateName, $MediaID='M001', $Status='Available')
     {
+        // Save Media ID for later functions
+        $this->MediaID = $MediaID;
+
         $Media = $this->ResourcePool->addChild("Media");
         $Media->addAttribute("Class", "Consumable");
         $Media->addAttribute("ID", $MediaID);
@@ -102,8 +140,11 @@ class CreateJDF
         $MediaRef->addAttribute("rRef", $MediaID);
     }
 
-    public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $Class = "Implementation", $ID = "D001", $Status = "Available")
+    public function setDevice($IDUsage="QueueDestination", $IDValue="Held", $Class="Implementation", $ID="D001", $Status="Available")
     {
+        // Used in resource link pool
+        $this->DeviceID = $ID;
+
         $Device = $this->ResourcePool->addChild("Device");
         $Device->addAttribute("Class", $Class);
         $Device->addAttribute("ID", $ID);
@@ -114,8 +155,10 @@ class CreateJDF
         $GeneralID->addAttribute("IDValue", $IDValue);
     }
 
-    public function setLayoutPreparationParams($Sides = "OneSidedFront", $ImpositionTemplateURL = null, $ID = "LPP001", $Status = "Available", $Class = "Parameter")
+    public function setLayoutPreparationParams($Sides="OneSidedFront", $ImpositionTemplateURL=null, $ID="LPP001", $Status="Available", $Class="Parameter")
     {
+        $this->LayoutID = $ID;
+
         // Check to make sure the selected Sides variable is an OK JDF value
         $AcceptableTypes = array('OneSidedBackFlipX', 'OneSidedBackFlipY', 'OneSidedFront', 'TwoSidedFlipX', 'TwoSidedFlipY');
         if (!in_array($Sides, $AcceptableTypes)) throw new Exception("[$Sides] is not an acceptable JDF EnumSides value.");
@@ -135,6 +178,9 @@ class CreateJDF
 
     public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
     {
+        // Save RunListID for later link pool
+        $this->RunListID = $RunListID;
+
         $RunList = $this->ResourcePool->addChild("RunList");
         $RunList->addAttribute("ID", $RunListID);
         $RunList->addAttribute("Status", $Status);
@@ -162,6 +208,11 @@ class CreateJDF
         $CustomerInfo = $this->JDFInitialize->addChild("CustomerInfo");
         $CustomerInfo->addAttribute("BillingCode", $BillingCode);
         $CustomerInfo->addAttribute("CustomerID", $CustomerID);
+    }
+
+    public function flush()
+    {
+        $this->setResourceLinkPool();
     }
 
     public function getXML()
