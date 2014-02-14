@@ -53,6 +53,7 @@ class CreateJDF
 
         // Add children that we will need regardless
         $this->setResourcePool();
+        $this->setResourceLinkPool();
         // Build out the params child
         $this->setParams($Types);
         // Build out the component child
@@ -66,15 +67,14 @@ class CreateJDF
 
     public function setParams($Types, $Class = "Parameter", $ID = "DPP001", $Status = "Available")
     {
-        // Save ParamID for link pool later
-        $this->ParamID = $ID;
-        // Also need the Type
-        $this->Types = $Types;
-
         $this->Params = $this->ResourcePool->addChild($Types . "Params");
         $this->Params->addAttribute("Class", $Class);
         $this->Params->addAttribute("ID", $ID);
         $this->Params->addAttribute("Status", $Status);
+        // Update link pool
+        $MediaLink = $this->ResourceLinkPool->addChild($Types . "ParamsLink");
+        $MediaLink->addAttribute("rRef", $ID);
+        $MediaLink->addAttribute("Usage", "Input");
     }
 
     public function setComponent($Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
@@ -97,9 +97,6 @@ class CreateJDF
 
     public function setMedia($SubstrateName, $MediaID = 'M001', $Status = 'Available')
     {
-        // Save Media ID for later functions
-        $this->MediaID = $MediaID;
-
         $Media = $this->ResourcePool->addChild("Media");
         $Media->addAttribute("Class", "Consumable");
         $Media->addAttribute("ID", $MediaID);
@@ -108,6 +105,11 @@ class CreateJDF
         // Set the linked Params media reference
         $MediaRef = $this->Params->addChild("MediaRef");
         $MediaRef->addAttribute("rRef", $MediaID);
+
+        // Update the link pool
+        $MediaLink = $this->ResourceLinkPool->addChild("MediaLink");
+        $MediaLink->addAttribute("rRef", $MediaID);
+        $MediaLink->addAttribute("Usage", "Input");
     }
 
     public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $Class = "Implementation", $ID = "D001", $Status = "Available")
@@ -180,28 +182,10 @@ class CreateJDF
         $CustomerInfo->addAttribute("CustomerID", $CustomerID);
     }
 
-    public function flush()
-    {
-        $this->setResourceLinkPool();
-    }
-
     public function setResourceLinkPool()
     {
         // Initiate the link pool
         $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
-
-        // Set MediaLink
-        if (!empty($this->MediaID)) {
-            $MediaLink = $this->ResourceLinkPool->addChild("MediaLink");
-            $MediaLink->addAttribute("rRef", $this->MediaID);
-            $MediaLink->addAttribute("Usage", "Input");
-        }
-        // Set DigitalPrintingParamsLink
-        if (!empty($this->ParamID)) {
-            $MediaLink = $this->ResourceLinkPool->addChild($this->Types . "ParamsLink");
-            $MediaLink->addAttribute("rRef", $this->ParamID);
-            $MediaLink->addAttribute("Usage", "Input");
-        }
     }
 
     public function getXML()

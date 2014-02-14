@@ -24,14 +24,6 @@ This is intended to be a collection of PHP classes which can be used to create a
 
 3. Call any optional methods
 
-4. Finalize with flush()
- ```php
- $JDF->flush();
- ```
- a. This method completes the JDF and prepares it for output.
- 
- b. Any optional methods should be called before flush().
- 
 4. Output! 
  ```php
  $rawXML = $JDF->getXML();

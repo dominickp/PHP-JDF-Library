@@ -29,8 +29,6 @@ $JDF->setLayoutPreparationParams($Tumble, $ExternalImpositionURL);
 // Set some customer information for HP Indigo billing
 $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
 
-// Call the flush method to complete the JDF generation (sets the resource link pool)
-$JDF->flush();
 
 $created = $JDF->getXML(); // Call the getXML method
 
