@@ -111,6 +111,10 @@ This is intended to be a collection of PHP classes which can be used to create a
 	</ResourceLinkPool>
 </JDF>
 ```
+### Todo
+- Generate the rest of the resource link pool
+- Setup better example with a form
+- Output as a file
 
 ### JDF Spec
 I'm using this as a reference: http://www.cip4.org/documents/jdf_specifications/html/Structure_of_JDF_Nodes.html

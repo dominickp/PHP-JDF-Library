@@ -10,13 +10,6 @@ class CreateJDF
     public $ResourceLinkPool;
     public $FileDirectory;
     public $Params;
-    public $MediaID;
-    public $Types;
-    public $ParamID;
-    public $RunListID;
-    public $ComponentID;
-    public $DeviceID;
-    public $LayoutID;
 
     public function __construct($DescriptiveName, $Types)
     {
@@ -79,9 +72,6 @@ class CreateJDF
 
     public function setComponent($Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
     {
-        // Save ComponentID for later
-        $this->ComponentID = $ID;
-
         $Component = $this->ResourcePool->addChild("Component");
         $Component->addAttribute("Class", $Class);
         $Component->addAttribute("ID", $ID);
@@ -114,9 +104,6 @@ class CreateJDF
 
     public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $Class = "Implementation", $ID = "D001", $Status = "Available")
     {
-        // Used in resource link pool
-        $this->DeviceID = $ID;
-
         $Device = $this->ResourcePool->addChild("Device");
         $Device->addAttribute("Class", $Class);
         $Device->addAttribute("ID", $ID);
@@ -129,8 +116,6 @@ class CreateJDF
 
     public function setLayoutPreparationParams($Sides = "OneSidedFront", $ImpositionTemplateURL = null, $ID = "LPP001", $Status = "Available", $Class = "Parameter")
     {
-        $this->LayoutID = $ID;
-
         // Check to make sure the selected Sides variable is an OK JDF value
         $AcceptableTypes = array('OneSidedBackFlipX', 'OneSidedBackFlipY', 'OneSidedFront', 'TwoSidedFlipX', 'TwoSidedFlipY');
         if (!in_array($Sides, $AcceptableTypes)) throw new Exception("[$Sides] is not an acceptable JDF EnumSides value.");
@@ -150,9 +135,6 @@ class CreateJDF
 
     public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
     {
-        // Save RunListID for later link pool
-        $this->RunListID = $RunListID;
-
         $RunList = $this->ResourcePool->addChild("RunList");
         $RunList->addAttribute("ID", $RunListID);
         $RunList->addAttribute("Status", $Status);
