@@ -29,15 +29,19 @@ This is intended to be a collection of PHP classes which can be used to create a
 4. Output! 
  ```php
  $rawXML = $JDF->getXML();
+ // or
+ $JDF->save('YourChosenFileName');
  ```
- a. I will have another method for creating the .JDF file automatically, but for now this will put the XML in a variable.
+ a. save() saves the JDF as a .jdf file in the output directory specified in parameters.php
+
+ b. getXML() gets the JDF as a string which you can optionally display.
  
- b. You can set the following to output the XML properly on a PHP page:
+  - You can set the following to output the XML properly on a PHP page:
  
- ```php
- Header('Content-type: text/xml');
- print_r($rawXML);
- ```
+  ```php
+  Header('Content-type: text/xml');
+  print_r($rawXML);
+  ```
 
 ### Optional Methods
 
