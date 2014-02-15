@@ -32,7 +32,9 @@ This is intended to be a collection of PHP classes which can be used to create a
  // or
  $JDF->save('YourChosenFileName');
  ```
- a. save() saves the JDF as a .jdf file in the output directory specified in parameters.php
+ a. save() saves the JDF as a .jdf file in the output directory specified in parameters.php.
+
+  - This method uses file_put_contents() which will overwrite a file with an existing name.
 
  b. getXML() gets the JDF as a string which you can optionally display.
  
