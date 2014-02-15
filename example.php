@@ -3,6 +3,13 @@
 include 'parameters.php'; // Include the parameters
 include 'JDF/CreateJDF.php'; // Include the JDF class
 
+/*
+ * In this example, the JDF file is built with all optional methods
+ * and the JDF is saved to a .JDF file in the /Output/ directory
+ * and also displayed on the screen when viewed on a browser.
+ */
+
+
 // Example
 $MyFile = 'example_image.jpg';
 
@@ -29,8 +36,9 @@ $JDF->setLayoutPreparationParams($Tumble, $ExternalImpositionURL);
 // Set some customer information for HP Indigo billing
 $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
 
-
 $created = $JDF->getXML(); // Call the getXML method
+
+$JDF->save('MySavedJDF'); // Save the JDF file to the output location in parameters
 
 Header('Content-type: text/xml');
 

@@ -9,12 +9,17 @@ class CreateJDF
     public $ResourcePool;
     public $ResourceLinkPool;
     public $FileDirectory;
+    public $OutputDirectory;
     public $Params;
+    public $DescriptiveName;
 
     public function __construct($DescriptiveName, $Types = 'DigitalPrinting', $Quantity = 1)
     {
         global $UltimateFileDestination;
         $this->FileDirectory = $UltimateFileDestination;
+
+        global $OutputLocation;
+        $this->OutputDirectory = $OutputLocation;
 
         // These are used to generate the initial XML field attributes
         $XMLEncoding = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -56,7 +61,7 @@ class CreateJDF
         $this->ResourcePool = $this->JDFInitialize->addChild("ResourcePool");
     }
 
-    public function setParams($Types, $Class = "Parameter", $ID = "DPP001", $Status = "Available")
+    public function setParams($Types, $ID = "DPP001", $Class = "Parameter", $Status = "Available")
     {
         $this->Params = $this->ResourcePool->addChild($Types . "Params");
         $this->Params->addAttribute("Class", $Class);
@@ -106,7 +111,7 @@ class CreateJDF
         $MediaLink->addAttribute("Usage", "Input");
     }
 
-    public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $Class = "Implementation", $ID = "D001", $Status = "Available")
+    public function setDevice($IDUsage = "QueueDestination", $IDValue = "Held", $ID = "D001", $Class = "Implementation", $Status = "Available")
     {
         $Device = $this->ResourcePool->addChild("Device");
         $Device->addAttribute("Class", $Class);
@@ -171,7 +176,7 @@ class CreateJDF
         $RunListLink = $this->ResourceLinkPool->addChild("RunListLink");
         $RunListLink->addAttribute("rRef", $RunListID);
         $RunListLink->addAttribute("Usage", "Input");
-        
+
         // Return the final file destination that the print device will be looking for
         return $URL;
     }
@@ -193,6 +198,12 @@ class CreateJDF
     {
         $ReturnXML = $this->JDFInitialize->asXML();
         return $ReturnXML;
+    }
+
+    public function save($fileName)
+    {
+        if(empty($fileName)) throw new Exception("Filename must be set to use the save() method.");
+        $this->JDFInitialize->asXML($this->OutputDirectory.$fileName.'.jdf');
     }
 
 }
