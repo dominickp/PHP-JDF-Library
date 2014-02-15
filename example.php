@@ -7,7 +7,7 @@ include 'JDF/CreateJDF.php'; // Include the JDF class
 $MyFile = 'example_image.jpg';
 
 // Create the JDF Object. Job name and JDF type required.
-$JDF = new CreateJDF('MyTestJDF', 'DigitalPrinting');
+$JDF = new CreateJDF('MyTestJDF', 'DigitalPrinting', 100);
 
 // Set a comment, optional.
 $JDF->setComment("Test comment");

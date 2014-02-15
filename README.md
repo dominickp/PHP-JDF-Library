@@ -7,12 +7,14 @@ This is intended to be a collection of PHP classes which can be used to create a
 
 1. Load the CreateJDF class in PHP and then create an instance of it.
  ```php
- $JDF = new CreateJDF('MyJobName', 'DigitalPrinting');
+ $JDF = new CreateJDF('MyJobName', 'DigitalPrinting', 100);
  ```
  a. The two required parameters are job name and process name, both as strings.
 
  b. Valid processes are one of the following:
   - Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting, PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation. RIPing, WebPrinting
+
+ c. The third parameter is quantity. Leaving this blank will default to 1.
 
 2. Set your file with setFile()
  ```php
@@ -112,7 +114,7 @@ This is intended to be a collection of PHP classes which can be used to create a
 </JDF>
 ```
 ### Todo
-- Generate the rest of the resource link pool
+- Gathering params
 - Setup better example with a form
 - Output as a file
 

@@ -11,7 +11,7 @@ class CreateJDF
     public $FileDirectory;
     public $Params;
 
-    public function __construct($DescriptiveName, $Types)
+    public function __construct($DescriptiveName, $Types = 'DigitalPrinting', $Quantity = 1)
     {
         global $UltimateFileDestination;
         $this->FileDirectory = $UltimateFileDestination;
@@ -47,10 +47,8 @@ class CreateJDF
         // Add children that we will need regardless
         $this->setResourcePool();
         $this->setResourceLinkPool();
-        // Build out the params child
         $this->setParams($Types);
-        // Build out the component child
-        $this->setComponent();
+        $this->setComponent($Quantity);
     }
 
     public function setResourcePool()
@@ -70,13 +68,19 @@ class CreateJDF
         $MediaLink->addAttribute("Usage", "Input");
     }
 
-    public function setComponent($Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
+    public function setComponent($Quantity = 1, $Class = "Quantity", $ID = "Component", $Status = "Unavailable", $ComponentType = "FinalProduct")
     {
         $Component = $this->ResourcePool->addChild("Component");
         $Component->addAttribute("Class", $Class);
         $Component->addAttribute("ID", $ID);
         $Component->addAttribute("Status", $Status);
         $Component->addAttribute("ComponentType", $ComponentType);
+
+        // Update the link pool
+        $ComponentLink = $this->ResourceLinkPool->addChild("ComponentLink");
+        $ComponentLink->addAttribute("rRef", $ID);
+        $ComponentLink->addAttribute("Usage", "Output");
+        $ComponentLink->addAttribute("Amount", $Quantity);
     }
 
     public function setComment($Comment)
@@ -112,6 +116,11 @@ class CreateJDF
         $GeneralID = $Device->addChild("GeneralID");
         $GeneralID->addAttribute("IDUsage", $IDUsage);
         $GeneralID->addAttribute("IDValue", $IDValue);
+
+        // Update the link pool
+        $DeviceLink = $this->ResourceLinkPool->addChild("DeviceLink");
+        $DeviceLink->addAttribute("rRef", $ID);
+        $DeviceLink->addAttribute("Usage", "Input");
     }
 
     public function setLayoutPreparationParams($Sides = "OneSidedFront", $ImpositionTemplateURL = null, $ID = "LPP001", $Status = "Available", $Class = "Parameter")
@@ -131,6 +140,10 @@ class CreateJDF
             $FileSpec = $ExternalImpositionTemplate->addChild("FileSpec");
             $FileSpec->addAttribute("URL", $ImpositionTemplateURL);
         }
+        // Update the link pool
+        $LayoutPreparationParamsLink = $this->ResourceLinkPool->addChild("LayoutPreparationParamsLink");
+        $LayoutPreparationParamsLink->addAttribute("rRef", $ID);
+        $LayoutPreparationParamsLink->addAttribute("Usage", "Input");
     }
 
     public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
@@ -153,6 +166,12 @@ class CreateJDF
 
         $URL = $this->FileDirectory . basename($LocalFile);
         $FileSpec->addAttribute("URL", $URL);
+
+        // Update the link pool
+        $RunListLink = $this->ResourceLinkPool->addChild("RunListLink");
+        $RunListLink->addAttribute("rRef", $RunListID);
+        $RunListLink->addAttribute("Usage", "Input");
+        
         // Return the final file destination that the print device will be looking for
         return $URL;
     }
