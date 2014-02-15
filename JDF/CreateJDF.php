@@ -203,7 +203,13 @@ class CreateJDF
     public function save($fileName)
     {
         if(empty($fileName)) throw new Exception("Filename must be set to use the save() method.");
-        $this->JDFInitialize->asXML($this->OutputDirectory.$fileName.'.jdf');
+
+        // Attempt to preserve white space (formatting
+        $dom = new DOMDocument;
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($this->JDFInitialize->asXML());
+        file_put_contents($this->OutputDirectory.$fileName.'.jdf',  $dom->saveXML());
     }
 
 }
