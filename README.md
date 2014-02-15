@@ -80,9 +80,18 @@ This is intended to be a collection of PHP classes which can be used to create a
  b. The external imposition template is an optional parameter and it must be the complete location of the imposition template, where the print device/DFE can locate it.
  
 - Set billing code and customer
+
  ```php
  $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
  ```
+
+- Set gathering parameters. Will research a bit more, but this seems to be HP implementation specific instructions on what to do after the job prints, e.g. insert a slip sheet.
+
+ ```php
+ $JDF->setGatheringParams('SeparatorSheet', 'Trailer');
+ ```
+
+ a. Will find out what set values are allowed here and add some exception handling.
 
 ### Example Output (as of 2/13)
 ```xml

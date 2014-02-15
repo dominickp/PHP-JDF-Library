@@ -181,6 +181,26 @@ class CreateJDF
         return $URL;
     }
 
+    public function setGatheringParams($SheetType = "SeparatorSheet", $SheetUsage = "Trailer", $ID = "GP001", $Status = "Available", $Class = "Parameter")
+    {
+        $GatheringParams = $this->ResourcePool->addChild("GatheringParams");
+        $GatheringParams->addAttribute("Class", $Class);
+        $GatheringParams->addAttribute("ID", $ID);
+        $GatheringParams->addAttribute("Status", $Status);
+
+        $Disjointing = $GatheringParams->addChild("Disjointing");
+        $Disjointing->addAttribute("Number", 1);
+
+        $InsertSheet = $Disjointing->addChild("InsertSheet");
+        $InsertSheet->addAttribute("SheetType", $SheetType);
+        $InsertSheet->addAttribute("SheetUsage", $SheetUsage);
+
+        // Update the link pool
+        $GatheringParamsLink = $this->ResourceLinkPool->addChild("GatheringParamsLink");
+        $GatheringParamsLink->addAttribute("rRef", $ID);
+        $GatheringParamsLink->addAttribute("Usage", 'Input');
+    }
+
     public function setCustomerInfo($BillingCode, $CustomerID)
     {
         $CustomerInfo = $this->JDFInitialize->addChild("CustomerInfo");

@@ -36,6 +36,9 @@ $JDF->setLayoutPreparationParams($Tumble, $ExternalImpositionURL);
 // Set some customer information for HP Indigo billing
 $JDF->setCustomerInfo('MyJobNumber', 'MyCustomer');
 
+// Gathering params. This is for a slip sheet in between jobs and stuff. HP implementation specific I think.
+$JDF->setGatheringParams('SeparatorSheet', 'Trailer');
+
 $created = $JDF->getXML(); // Call the getXML method
 
 $JDF->save('MySavedJDF'); // Save the JDF file to the output location in parameters

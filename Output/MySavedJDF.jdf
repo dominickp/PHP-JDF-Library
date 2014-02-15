@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" Type="Combined" ID="rootNodeId" Status="Waiting" JobPartID="000.cdp.797" Version="1.3" Types="DigitalPrinting" DescriptiveName="MyTestJDF">
   <AuditPool>
-    <Created AgentName="PHP-JDF-LIbrary" TimeStamp="2014-02-15 23:08:50"/>
+    <Created AgentName="PHP-JDF-LIbrary" TimeStamp="2014-02-15 23:18:50"/>
   </AuditPool>
   <ResourcePool>
     <DigitalPrintingParams Class="Parameter" ID="DPP001" Status="Available">
@@ -22,6 +22,11 @@
         <FileSpec URL="urn:8_up_postcards"/>
       </ExternalImpositionTemplate>
     </LayoutPreparationParams>
+    <GatheringParams Class="Parameter" ID="GP001" Status="Available">
+      <Disjointing Number="1">
+        <InsertSheet SheetType="SeparatorSheet" SheetUsage="Trailer"/>
+      </Disjointing>
+    </GatheringParams>
   </ResourcePool>
   <ResourceLinkPool>
     <DigitalPrintingParamsLink rRef="DPP001" Usage="Input"/>
@@ -30,6 +35,7 @@
     <RunListLink rRef="RunList_1" Usage="Input"/>
     <DeviceLink rRef="D001" Usage="Input"/>
     <LayoutPreparationParamsLink rRef="LPP001" Usage="Input"/>
+    <GatheringParamsLink rRef="GP001" Usage="Input"/>
   </ResourceLinkPool>
   <Comment Name="GeneralComments">Test comment</Comment>
   <CustomerInfo BillingCode="MyJobNumber" CustomerID="MyCustomer"/>
