@@ -201,6 +201,28 @@ class CreateJDF
         $GatheringParamsLink->addAttribute("Usage", 'Input');
     }
 
+    public function setHPStreaming($streamingBool = 1, $streamingThreshold = 1)
+    {
+        // Transform boolean into string On/Off
+        if($streamingBool == 1){
+            $streamingBool = 'On';
+        } else {
+            $streamingBool = 'Off';
+        }
+
+        if(!is_int($streamingThreshold)) throw new Exception("[hpPrintWhileLoadThreshold] MUST be an integer.");
+
+        // Set the streaming on or off
+        $hpPrintWhileLoadEnable = $this->ResourcePool->addChild("GeneralID");
+        $hpPrintWhileLoadEnable->addAttribute("IDUsage", "hpPrintWhileLoadEnable");
+        $hpPrintWhileLoadEnable->addAttribute("IDValue", $streamingBool);
+
+        // Set the stream buffer
+        $hpPrintWhileLoadEnable = $this->ResourcePool->addChild("GeneralID");
+        $hpPrintWhileLoadEnable->addAttribute("IDUsage", "hpPrintWhileLoadThreshold");
+        $hpPrintWhileLoadEnable->addAttribute("IDValue", $streamingThreshold);
+    }
+
     public function setCustomerInfo($BillingCode, $CustomerID)
     {
         $CustomerInfo = $this->JDFInitialize->addChild("CustomerInfo");

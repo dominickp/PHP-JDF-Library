@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" Type="Combined" ID="rootNodeId" Status="Waiting" JobPartID="000.cdp.797" Version="1.3" Types="DigitalPrinting" DescriptiveName="MyTestJDF">
   <AuditPool>
-    <Created AgentName="PHP-JDF-LIbrary" TimeStamp="2014-02-15 23:22:13"/>
+    <Created AgentName="PHP-JDF-LIbrary" TimeStamp="2014-03-13 02:41:59"/>
   </AuditPool>
   <ResourcePool>
     <DigitalPrintingParams Class="Parameter" ID="DPP001" Status="Available">
@@ -17,6 +17,8 @@
     <Device Class="Implementation" ID="D001" Status="Available">
       <GeneralID IDUsage="QueueDestination" IDValue="Held"/>
     </Device>
+    <GeneralID IDUsage="hpPrintWhileLoadEnable" IDValue="On"/>
+    <GeneralID IDUsage="hpPrintWhileLoadThreshold" IDValue="100"/>
     <LayoutPreparationParams Class="Parameter" ID="LPP001" Status="Available" Sides="TwoSidedFlipY">
       <ExternalImpositionTemplate>
         <FileSpec URL="urn:8_up_postcards"/>

@@ -28,6 +28,9 @@ $URL = $JDF->setFile($InputLocation.$MyFile);
 // Determines the location of the job, whether held in print queue or direct to print. Default is queue.
 $JDF->setDevice();
 
+// Set streaming on or off. Tells the HP DFE to start sending the job to the press device when it hits a certain threshold on the rip.
+$JDF->setHPStreaming(true, 100);
+
 // Set the tumble of the job and an optional imposition template
 $Tumble = "TwoSidedFlipY";
 $ExternalImpositionURL = "urn:8_up_postcards";
