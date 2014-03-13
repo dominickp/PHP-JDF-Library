@@ -2,6 +2,8 @@
 
 This is intended to be a collection of PHP classes which can be used to create and interpret JDF files. The JDF spec is very broad, so for now I'm going to focus my development efforts on JDFs used by HP Indigos and the HP Digital Front End (DFE). I've built in some exception handling so values that don't comply with the spec are refused.
 
+## [How To use](https://github.com/dominickp/PHP-JDF-Library/wiki/How-to-use)
+
 ### Example Output (as of 2/15)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
