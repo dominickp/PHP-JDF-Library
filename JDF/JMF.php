@@ -2,7 +2,7 @@
 
 include 'parameters.php';
 
-class CreateJMF
+class JMF
 {
 
     public $JMFInitialize;
@@ -19,10 +19,14 @@ class CreateJMF
         $SenderID = 'PHPJDFLibrary';
         $Version = '1.2';
 
-        // Initialize the JMF
-        $JDFStart = $XMLEncoding . '<JMF xmlns="' . $XMLNS . '" xmlns:xsi="' . $XMLSXSI . '" SenderID="' . $SenderID . '" Version="' . $Version . '"></JDF>';
 
-        $this->JMFInitialize = new SimpleXMLElement($JDFStart, LIBXML_NOEMPTYTAG);
+        // Initialize the JMF
+        $JMFStart = $XMLEncoding . '<JMF xmlns="' . $XMLNS . '" xmlns:xsi="' . $XMLSXSI . '" SenderID="' . $SenderID . '" Version="' . $Version . '"></JMF>';
+
+        $this->JMFInitialize = new SimpleXMLElement($JMFStart, LIBXML_NOEMPTYTAG);
+
+        // Namespace
+        $this->JMFInitialize->registerXPathNamespace('xsi', $XMLSXSI);
 
     }
 
@@ -30,11 +34,32 @@ class CreateJMF
     {
         $this->Query = $this->JMFInitialize->addChild("Query");
         $this->Query->addAttribute("Type", "Status");
-        $this->Query->addAttribute("xsi:type", "QueryStatus");
-        $this->Query->addAttribute("id", "misb4c3c9f88d02c8ea"); // Need to check HP spec...
+        $this->Query->addAttribute("xsi:type", "QueryStatus", "http://www.w3.org/2001/XMLSchema-instance");
+        $this->Query->addAttribute("ID", "misb4c3c9f88d02c8ea"); // Need to check HP spec...
 
         $StatusQuParams = $this->Query->addChild('StatusQuParams');
         $StatusQuParams->addAttribute('DeviceDetails', 'Details');
+    }
+
+    public function sendJMF($IDP_Worker){
+
+        // Make sure cURL is enabled
+        if(!function_exists('curl_version')) throw new Exception("cURL must be installed for sendJMF() to work.");
+
+        $ch = curl_init($IDP_Worker);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->JMFInitialize->asXML());
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-type: application/vnd.cip4-jmf+xml'
+        ));
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+
+        return $result;
+
     }
 
 
