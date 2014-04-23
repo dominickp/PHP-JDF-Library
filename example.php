@@ -1,7 +1,7 @@
 <?php
 
 include 'parameters.php'; // Include the parameters
-include 'JDF/CreateJDF.php'; // Include the JDF class
+include 'JDF/JDF.php'; // Include the JDF class
 
 /*
  * In this example, the JDF file is built with all optional methods
