@@ -49,3 +49,15 @@ $JDF->save('MySavedJDF'); // Save the JDF file to the output location in paramet
 Header('Content-type: text/xml');
 
 print_r($created);
+
+
+/* Example JMF
+
+<?xml version="1.0" encoding="UTF-8"?>
+<JMF xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SenderID="MIS System" TimeStamp="2006-04-19T17:47:10-07:00" Version="1.2">
+  <Query ID="misb4c3c9f88d02c8ea" Type="Status" xsi:type="QueryStatus">
+    <StatusQuParams DeviceDetails="Details" />
+  </Query>
+</JMF>
+
+*/
