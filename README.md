@@ -4,6 +4,7 @@ This is intended to be a collection of PHP classes which can be used to create, 
 
 ## How to use
 JDF: [JDF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JDF-Usage)
+
 JMF: [JMF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JMF-Usage)
 
 ### Example Output (as of 2/15)
