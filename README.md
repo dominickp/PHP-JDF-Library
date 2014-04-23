@@ -3,9 +3,9 @@
 This is intended to be a collection of PHP classes which can be used to create, interpret, and send JDF and JMF files, primarily for HP's implimentation. The JDF spec is very broad, so for now I'm going to focus my development efforts on JDFs used by HP Indigos and the HP Digital Front End (DFE).
 
 ## How to use
-JDF: [JDF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JDF-Usage)
+[JDF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JDF-Usage)
 
-JMF: [JMF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JMF-Usage)
+[JMF Usage](https://github.com/dominickp/PHP-JDF-Library/wiki/JMF-Usage)
 
 ### Example Output (as of 2/15)
 ```xml
