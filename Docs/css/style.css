@@ -1,0 +1,38 @@
+/* amore come dolore */
+header{
+	background-image:url('../img/office.png');
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+header h1{
+	margin:0;
+	line-height:90px;
+	font-size:48px;
+	white-space:nowrap;
+}
+header h1 a{
+	color: #72d29b;
+	text-decoration:none;
+	-webkit-transition:color 0.15s ease-out;
+}
+header h1 a:hover{
+	color: #FFF;
+	text-decoration:none;
+}
+body{
+	background-image:url('../img/fabric_of_squares_gray.png');
+}
+h1,h2,h3,h4,h5,h6,h7{
+	font-family: 'Doppio One', 'sans-serif';
+}
+
+@media (min-width: 768px) {
+	.navbar{
+		margin-top:20px;
+	}
+}
+
+@media(max-width:992px){
+	header h1{
+		font-size:36px;
+	}
+}
