@@ -8,6 +8,7 @@ header h1{
 	line-height:90px;
 	font-size:48px;
 	white-space:nowrap;
+	text-shadow:none;
 }
 header h1 a{
 	color: #72d29b;
@@ -23,6 +24,8 @@ body{
 }
 h1,h2,h3,h4,h5,h6,h7{
 	font-family: 'Doppio One', 'sans-serif';
+	color: #72d29b;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 @media (min-width: 768px) {
@@ -31,6 +34,11 @@ h1,h2,h3,h4,h5,h6,h7{
 	}
 }
 
+@media(max-width:786px){
+	header h1{
+		text-align:center;
+	}
+}
 @media(max-width:992px){
 	header h1{
 		font-size:36px;

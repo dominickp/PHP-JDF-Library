@@ -1,4 +1,12 @@
 <?php
+	$currentPage = basename($_SERVER["PHP_SELF"]);
+	
+	function isActive($pageName){
+		global $currentPage;
+		if($currentPage == $pageName){
+			return 'active';
+		}
+	};
 ?>
 <nav class="navbar navbar-inverse" role="navigation">
 <div class="container-fluid">
@@ -15,7 +23,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">Home</a></li>
+        <li class="<?php echo isActive('index.php') ?>"><a href="index.php">Home</a></li>
         <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
