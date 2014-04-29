@@ -5,8 +5,8 @@
 <div class="row">
     <div class="col-md-8">
         <div class="row">
-            <div class="col-md-12">
 
+            <div class="col-md-12">
                 <h2>Description</h2>
                 <p>
                     The Job Definition Format (JDF) is a specification, based on XML, which is designed to help print jobs flow through a shop. The standard allows one format that many vendors can use to define jobs and also send messages about the status of jobs and the graphic equipment which is producing them. <?php echo $libraryTitle; ?> is a collection of PHP classes made to create and send JDF and JMF. The focus of this library will be toward HP's specific implementation.
@@ -14,17 +14,21 @@
                 <p>
                     A practical example of how you might use this library could be in a web-to-print workflow. Jobs could come in from the web and using the JDF class, you could create a JDF to send into your Digital Front End (DFE), specifying how it imposes, what paper it prints on and more. This could allow your job to drop on press in an automated fashion. Another example would utilize the JMF spec where you could send a message to a print device (like a DFE) and it would tell you the status of a job.
                 </p>
-
             </div>
-            <div class="col-md-12">
 
+            <div class="col-md-12">
                 <h2>Requirements</h2>
                 <ul>
                     <li>PHP 5.3+</li>
                     <li>cURL PHP module</li>
                 </ul>
-
             </div>
+
+            <div class="col-md-12">
+                <h2>License</h2>
+                Released under the <a href="https://github.com/dominickp/PHP-JDF-Library/blob/master/LICENSE" target="_blank">MIT license</a>.
+            </div>
+
         </div>
     </div>
     <div class="col-md-4">
