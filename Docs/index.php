@@ -26,7 +26,7 @@
 
             <div class="col-md-12">
                 <h2>License</h2>
-                Released under the <a href="https://github.com/dominickp/PHP-JDF-Library/blob/master/LICENSE" target="_blank">MIT license</a>.
+                Released under the <a href="<?php echo $libraryGitHubURL; ?>/blob/master/LICENSE" target="_blank">MIT license</a>.
             </div>
 
         </div>
