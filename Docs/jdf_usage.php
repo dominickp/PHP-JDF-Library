@@ -18,11 +18,15 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>new JDF()</h4>
+                        <h4>getJDF()</h4>
 
-                        <p>Load the JDF class in PHP and then create an instance of it.</p>
-                        <pre>object JDF(string $jobName, string $process [, int $quantity ])</pre>
-                        <pre><code class="php">$JDF = new JDF('MyJobName', 'DigitalPrinting', 100);</code></pre>
+                        <p>Load the PHPJDFLibrary class and make an instance of the JDF object.</p>
+                        <pre>object getJDF(string $jobName, string $process [, int $quantity ])</pre>
+                        <pre><code class="php">require 'JDF/PHPJDFLibrary.php';
+
+$PHPJDFLibrary = new PHPJDFLibrary();
+
+$JDF = $PHPJDFLibrary->getJDF('MyTestJDF', 'DigitalPrinting', 100);</code></pre>
 
                         <ul>
                             <li>The two required parameters are job name and process name, both as strings.</li>

@@ -17,11 +17,15 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>new JMF()</h4>
+                        <h4>getJMF()</h4>
 
-                        <p>Load the JMF class in PHP and then create an instance of it.</p>
-                        <pre>object JMF()</pre>
-                        <pre><code class="php">$JMF = new JMF();</code></pre>
+                        <p>Load the PHPJDFLibrary class and make an instance of the JMF object.</p>
+                        <pre>object getJMF(string $jobName, string $process [, int $quantity ])</pre>
+                        <pre><code class="php">require 'JDF/PHPJDFLibrary.php';
+
+$PHPJDFLibrary = new PHPJDFLibrary();
+
+$JMF = $PHPJDFLibrary->getJMF();</code></pre>
 
                     </section>
 
