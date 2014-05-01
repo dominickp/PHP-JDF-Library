@@ -1,7 +1,5 @@
 <?php
 
-namespace PHPJDFLibrary;
-
 include 'parameters.php';
 
 class JMF
