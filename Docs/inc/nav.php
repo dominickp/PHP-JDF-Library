@@ -29,6 +29,7 @@
           <ul class="dropdown-menu">
             <li><a href="jdf_usage.php">JDF</a></li>
             <li><a href="jmf_usage.php">JMF</a></li>
+            <li><a href="jmf_usage.php">JMF Manager</a></li>
           </ul>
         </li>
         <li class="<?php echo isActive('examples.php') ?>"><a href="examples.php">Examples</a></li>

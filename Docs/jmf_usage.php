@@ -10,7 +10,7 @@ include('inc/header.php');
                     <h2><?php echo $pageTitle; ?></h2>
 
                     <p>
-                        The JDF object allows...
+                        The JMF object allows you to create a JDF message to a print device to obtain information or send instructions.
                     </p>
 
                     <h3>Start using the class</h3>
@@ -32,8 +32,12 @@ include('inc/header.php');
                         <h4>getStatus()</h4>
 
                         <p>Allow the class to analyze the local file you're building the JDF for.</p>
-                        <pre>void getStatus()</pre>
-                        <pre><code class="php">$JMF->getStatus();</code></pre>
+                        <pre>void getStatus([bool $detailed])</pre>
+                        <pre><code class="php">$JMF->getStatus(true);</code></pre>
+
+                        <ul>
+                            <li>Determine if you want to send the detailed or the basic status call by sending a true or false for the $detailed parameter. Default is false.</li>
+                        </ul>
 
                     </section>
 

@@ -2,7 +2,7 @@
 
 include 'parameters.php';
 
-class CreateJDF
+class JDF
 {
 
     public $JDFInitialize;

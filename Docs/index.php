@@ -21,6 +21,7 @@
                 <ul>
                     <li>PHP 5.3+</li>
                     <li>cURL PHP module</li>
+                    <li>Fileinfo PHP module</li>
                 </ul>
             </div>
 

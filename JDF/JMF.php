@@ -1,5 +1,7 @@
 <?php
 
+namespace PHPJDFLibrary;
+
 include 'parameters.php';
 
 class JMF
@@ -30,26 +32,22 @@ class JMF
 
     }
 
-    public function getStatus()
+    public function getStatus($detailed = false)
     {
+
+        if($detailed){
+            $DeviceDetails = 'Full';
+        } else {
+            $DeviceDetails = 'Details';
+        }
+
         $this->Query = $this->JMFInitialize->addChild("Query");
         $this->Query->addAttribute("Type", "Status");
         $this->Query->addAttribute("xsi:type", "QueryStatus", "http://www.w3.org/2001/XMLSchema-instance");
         $this->Query->addAttribute("ID", "misb4c3c9f88d02c8ea"); // Need to check HP spec...
 
         $StatusQuParams = $this->Query->addChild('StatusQuParams');
-        $StatusQuParams->addAttribute('DeviceDetails', 'Details');
-    }
-
-    public function getStatusDetailsFull()
-    {
-        $this->Query = $this->JMFInitialize->addChild("Query");
-        $this->Query->addAttribute("Type", "Status");
-        $this->Query->addAttribute("xsi:type", "QueryStatus", "http://www.w3.org/2001/XMLSchema-instance");
-        $this->Query->addAttribute("ID", "misb4c3c9f88d02c8ea"); // Need to check HP spec...
-
-        $StatusQuParams = $this->Query->addChild('StatusQuParams');
-        $StatusQuParams->addAttribute('DeviceDetails', 'Full');
+        $StatusQuParams->addAttribute('DeviceDetails', $DeviceDetails);
     }
 
     public function sendJMF($IDP_Worker){
