@@ -100,8 +100,7 @@ include('inc/header.php');
 
                         <p>Used to choose an imposition template and tumble setting.</p>
                         <pre>void setLayoutPreparationParams(string $side_type [, mixed $impositionTemplateURL [, string $ID [, string $status [, string $class ]]]])</pre>
-                        <pre><code class="php">$JDF->setLayoutPreparationParams('TwoSidedFlipY',
-                                'urn:8_up_postcards');</code></pre>
+                        <pre><code class="php">$JDF->setLayoutPreparationParams('TwoSidedFlipY', 'urn:8_up_postcards');</code></pre>
 
                         <ul>
                             <li>Tumble setting must be one of the following</li>
