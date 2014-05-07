@@ -17,7 +17,7 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>getStatus()</h4>
+                        <h4 id="get_status">getStatus()</h4>
 
                         <p>Allow the class to analyze the local file you're building the JDF for.</p>
                         <pre>void getStatus([bool $detailed])</pre>
@@ -35,11 +35,11 @@ include('inc/header.php');
         </div>
         <div class="col-md-4">
 
-            <h3>Placeholder</h3>
+            <h3>Quick Jump</h3>
 
-            <p>
-                Scrollspy here maybe
-            </p>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#get_status">getStatus()</a></li>
+            </ul>
 
         </div>
     </div>

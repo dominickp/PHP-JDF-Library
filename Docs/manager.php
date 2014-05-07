@@ -18,7 +18,7 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>load()</h4>
+                        <h4 id="load">load()</h4>
 
                         <p>Load a JMF or JDF object into the Manager.</p>
                         <pre>void load(object $JDF)</pre>
@@ -30,7 +30,7 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>getXML()</h4>
+                        <h4 id="get_xml">getXML()</h4>
 
                         <p>Get the loaded object as an XML string.</p>
                         <pre>string getXML()</pre>
@@ -43,7 +43,7 @@ print_r($MyXML);</code></pre>
 
                     <section>
 
-                        <h4>postXML()</h4>
+                        <h4 id="post_xml">postXML()</h4>
 
                         <p>Post the loaded object as XML to a server and capture the response.</p>
                         <pre>string postXML(string $ServerAddress)</pre>
@@ -60,11 +60,13 @@ print_r($Response);</code></pre>
         </div>
         <div class="col-md-4">
 
-            <h3>Placeholder</h3>
+            <h3>Quick Jump</h3>
 
-            <p>
-                Scrollspy here maybe
-            </p>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#load">load()</a></li>
+                <li><a href="#get_xml">getXML()</a></li>
+                <li><a href="#post_xml">postXML()</a></li>
+            </ul>
 
         </div>
     </div>

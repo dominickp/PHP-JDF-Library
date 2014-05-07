@@ -18,7 +18,7 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>setFile()</h4>
+                        <h4 id="set_file">setFile()</h4>
 
                         <p>Allow the class to analyze the local file you're building the JDF for.</p>
                         <pre>string setFile(string $localFileLocation [, string $runListID [, string $status ]])</pre>
@@ -30,7 +30,7 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>setComment()</h4>
+                        <h4 id="set_comment">setComment()</h4>
 
                         <p>Adds a comment to the job.</p>
                         <pre>void setComment(string $comment)</pre>
@@ -39,7 +39,7 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4>setMedia()</h4>
+                        <h4 id="set_media">setMedia()</h4>
 
                         <p>Used to define the press substrate/paper the job uses.</p>
                         <pre>void setMedia(string $substrateName [, string $mediaID [, string $status ]])</pre>
@@ -53,7 +53,7 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4>setDevice()</h4>
+                        <h4 id="set_devices">setDevice()</h4>
 
                         <p>Set the job location. This tells the press/DFE if the job should be held in the DFE queue,
                             print queue, or even to print automatically.</p>
@@ -72,7 +72,7 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4>setLayoutPreparationParams()</h4>
+                        <h4 id="set_layout_prep_params">setLayoutPreparationParams()</h4>
 
                         <p>Used to choose an imposition template and tumble setting.</p>
                         <pre>void setLayoutPreparationParams(string $side_type [, mixed $impositionTemplateURL [, string $ID [, string $status [, string $class ]]]])</pre>
@@ -92,7 +92,7 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4>setCustomerInfo()</h4>
+                        <h4 id="set_customer_info">setCustomerInfo()</h4>
 
                         <p>Set billing code and customer.</p>
                         <pre>void setCustomerInfo(string $jobNumber, string $customer)</pre>
@@ -101,7 +101,7 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4>setGatheringParams()</h4>
+                        <h4 id="set_gathering_params">setGatheringParams()</h4>
 
                         <p>Set gathering parameters. Will research a bit more, but this seems to be HP implementation
                             specific instructions on what to do after the job prints, e.g. insert a slip sheet.</p>
@@ -119,11 +119,17 @@ include('inc/header.php');
         </div>
         <div class="col-md-4">
 
-            <h3>Placeholder</h3>
+            <h3>Quick Jump</h3>
 
-            <p>
-                Scrollspy here maybe
-            </p>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#set_file">setFile</a></li>
+                <li><a href="#set_comment">setComment()</a></li>
+                <li><a href="#set_media">setMedia()</a></li>
+                <li><a href="#set_devices">setDevice()</a></li>
+                <li><a href="#set_layout_prep_params">setLayoutPreparationParams()</a></li>
+                <li><a href="#set_customer_info">setCustomerInfo()</a></li>
+                <li><a href="#set_gathering_params">setGatheringParams()</a></li>
+            </ul>
 
         </div>
     </div>
