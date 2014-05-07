@@ -24,13 +24,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="<?php echo isActive('index.php') ?>"><a href="index.php">Home</a></li>
-        <li class="dropdown <?php echo isActive('jdf.php').isActive('jmf.php').isActive('manager.php').isActive('container.php') ?>">
+        <li class="dropdown <?php echo isActive('jdf_usage.php').isActive('jmf_usage.php').isActive('manager_usage.php').isActive('container_usage.php') ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="container.php">Container</a></li>
-            <li><a href="jdf.php">JDF</a></li>
-            <li><a href="jmf.php">JMF</a></li>
-            <li><a href="manager.php">Manager</a></li>
+            <li><a href="container_usage.php">Container</a></li>
+            <li><a href="jdf_usage.php">JDF</a></li>
+            <li><a href="jmf_usage.php">JMF</a></li>
+            <li><a href="manager_usage.php">Manager</a></li>
           </ul>
         </li>
         <li class="<?php echo isActive('examples.php') ?>"><a href="examples.php">Examples</a></li>
