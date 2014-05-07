@@ -1,6 +1,6 @@
 <?php
 
-require 'JDF/PHPJDFLibrary.php';
+require 'JDF/Container.php';
 
 include 'parameters.php'; // Include the parameters
 #include 'JDF/PHPJDFLibrary.php'; // Include the JDF class

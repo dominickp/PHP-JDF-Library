@@ -48,32 +48,4 @@ class JMF
         $StatusQuParams->addAttribute('DeviceDetails', $DeviceDetails);
     }
 
-    public function sendJMF($IDP_Worker){
-
-        // Make sure cURL is enabled
-        if(!function_exists('curl_version')) throw new Exception("cURL must be installed for sendJMF() to work.");
-
-        $ch = curl_init($IDP_Worker);
-
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->JMFInitialize->asXML());
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-type: application/vnd.cip4-jmf+xml'
-        ));
-        $result = curl_exec($ch);
-
-        curl_close($ch);
-
-        return $result;
-
-    }
-
-
-    public function getXML()
-    {
-        $ReturnXML = $this->JMFInitialize->asXML();
-        return $ReturnXML;
-    }
-
 }

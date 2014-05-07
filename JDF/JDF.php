@@ -236,22 +236,5 @@ class JDF
         $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
     }
 
-    public function getXML()
-    {
-        $ReturnXML = $this->JDFInitialize->asXML();
-        return $ReturnXML;
-    }
-
-    public function save($fileName)
-    {
-        if(empty($fileName)) throw new Exception("Filename must be set to use the save() method.");
-
-        // Attempt to preserve white space (formatting
-        $dom = new DOMDocument;
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-        $dom->loadXML($this->JDFInitialize->asXML());
-        file_put_contents($this->OutputDirectory.$fileName.'.jdf',  $dom->saveXML());
-    }
 
 }

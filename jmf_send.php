@@ -1,7 +1,7 @@
 <?php
 
 include 'parameters.php'; // Include the parameters
-require 'JDF/PHPJDFLibrary.php'; // Include the JDF class
+require 'JDF/Container.php'; // Include the JDF class
 
 $IDP_Worker = 'http://192.168.1.40:8080/prodflow/jmf/dfe';
 $IDP_Worker = 'http://192.168.1.45/dpp/jmf';

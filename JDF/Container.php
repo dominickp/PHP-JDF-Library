@@ -4,7 +4,7 @@ require 'JDF.php';
 require 'JMF.php';
 
 
-class PHPJDFLibrary{
+class Container{
 
     public function getJDF($DescriptiveName, $Types, $Quantity){
 
