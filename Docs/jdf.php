@@ -10,9 +10,7 @@ include('inc/header.php');
                     <h2><?php echo $pageTitle; ?></h2>
 
                     <p>
-                        The JDF object allows you to define a job using a several methods. Once your JDF object is
-                        defined, you can get the JDF as XML, a .jdf file, or post it directly to a device.
-                    </p>
+                        The JDF object allows you to define a job using a several methods.
 
                     <h3>Required Methods</h3>
 
