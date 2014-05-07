@@ -13,22 +13,6 @@ include('inc/header.php');
                         The JMF object allows you to create a JDF message to a print device to obtain information or send instructions.
                     </p>
 
-                    <h3>Start using the class</h3>
-
-                    <section>
-
-                        <h4>getJMF()</h4>
-
-                        <p>Load the PHPJDFLibrary class and make an instance of the JMF object.</p>
-                        <pre>object getJMF(string $jobName, string $process [, int $quantity ])</pre>
-                        <pre><code class="php">require 'JDF/PHPJDFLibrary.php';
-
-$PHPJDFLibrary = new PHPJDFLibrary();
-
-$JMF = $PHPJDFLibrary->getJMF();</code></pre>
-
-                    </section>
-
                     <h3>Get basic status information</h3>
 
                     <section>

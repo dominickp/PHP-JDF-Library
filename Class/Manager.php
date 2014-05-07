@@ -5,7 +5,7 @@ class Manager
 
     protected $SimpleXMLObject;
 
-    public function __construct($SimpleXMLObject){
+    public function load($SimpleXMLObject){
 
         $this->SimpleXMLObject = $SimpleXMLObject;
 
@@ -38,7 +38,7 @@ class Manager
         return $ReturnXML;
     }
 
-    public function saveAs($fileName)
+    public function saveFile($fileName)
     {
         if(empty($fileName)) throw new Exception("Filename must be set to use the save() method.");
 

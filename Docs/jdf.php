@@ -14,34 +14,6 @@ include('inc/header.php');
                         defined, you can get the JDF as XML, a .jdf file, or post it directly to a device.
                     </p>
 
-                    <h3>Start using the class</h3>
-
-                    <section>
-
-                        <h4>getJDF()</h4>
-
-                        <p>Load the PHPJDFLibrary class and make an instance of the JDF object.</p>
-                        <pre>object getJDF(string $jobName, string $process [, int $quantity ])</pre>
-                        <pre><code class="php">require 'JDF/PHPJDFLibrary.php';
-
-$PHPJDFLibrary = new PHPJDFLibrary();
-
-$JDF = $PHPJDFLibrary->getJDF('MyTestJDF', 'DigitalPrinting', 100);</code></pre>
-
-                        <ul>
-                            <li>The two required parameters are job name and process name, both as strings.</li>
-                            <li>Valid processes are one of the following:</li>
-                            <ul>
-                                <li>Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting,
-                                    PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation.
-                                    RIPing, WebPrinting
-                                </li>
-                            </ul>
-                            <li>The third parameter is quantity. Leaving this blank will default to 1.</li>
-                        </ul>
-
-                    </section>
-
                     <h3>Required Methods</h3>
 
                     <section>
