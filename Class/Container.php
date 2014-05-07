@@ -1,8 +1,8 @@
 <?php
 
-require 'JDF.php';
-require 'JMF.php';
-require 'Manager.php';
+require_once 'JDF.php';
+require_once 'JMF.php';
+require_once 'Manager.php';
 
 
 class Container{

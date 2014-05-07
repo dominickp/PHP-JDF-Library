@@ -10,7 +10,7 @@ include('inc/header.php');
                     <h2><?php echo $pageTitle; ?></h2>
 
                     <p>
-                        The Manager object allows you to convert a <a href="jdf.php">JDF</a> or <a href="jmf.php">JMF</a> object into usable XML. This class also has other helpful methods for sending and saving the XML.
+                        The Manager object allows you to convert a <a href="jdf_usage.php">JDF</a> or <a href="jmf_usage.php">JMF</a> object into usable XML. This class also has other helpful methods for sending and saving the XML.
                     </p>
 
 

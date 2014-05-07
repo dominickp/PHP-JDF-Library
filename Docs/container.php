@@ -10,7 +10,7 @@ include('inc/header.php');
                     <h2><?php echo $pageTitle; ?></h2>
 
                     <p>
-                        The Container class allows you to access the objects in the library: <a href="jdf.php">JDF</a>, <a href="jmf.php">JMF</a>, and the <a href="manager.php">Manager</a>.
+                        The Container class allows you to access the objects in the library: <a href="jdf_usage.php">JDF</a>, <a href="jmf_usage.php">JMF</a>, and the <a href="manager_usage.php">Manager</a>.
                     </p>
 
                     <h3>Start using the class</h3>

@@ -1,9 +1,9 @@
 <?php
 $pageTitle = 'Code Examples';
-include('inc/header.php');
+include_once('inc/header.php');
 ?>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="row">
 
                 <div class="col-md-12">
@@ -15,9 +15,33 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4>Build a JDF for a DFE/Indigo Hotfolder</h4>
+                        <h3>Build a JDF for a DFE/Indigo Hotfolder</h3>
 
-                        <pre><code class="php">$Manager->load($JDF);</code></pre>
+                        <pre><code class="php">&lt;?php
+/*
+    This script builds a basic JDF and displays it as raw XML
+*/
+
+require('../../Class/Container.php'); // Include the container class
+
+$Container = new Container(); // Get Container object
+
+$JDF = $Container->getJDF('MyTestJDF', 'DigitalPrinting', 100); // Get the JDF object
+$JDF->setFile('input/example_image.jpg', 'FILE://hppro01-sm1/Jobs/'); // Set the input file and output directory
+$JDF->setMedia("100# Gloss Cover"); // Set paper
+$JDF->setLayoutPreparationParams('TwoSidedFlipY', 'urn:8_up_postcards'); // Set imposition settings
+
+$Manager = $Container->getManager(); // Get the Manager
+$Manager->load($JDF); // Load our JDF object into the Manager
+
+$MyXML = $Manager->getXML(); // Get XML
+
+header("Content-type: text/xml; charset=utf-8"); // Set HTTP header to XML
+print_r($MyXML);</code></pre>
+
+                        <h4>Example Output</h4>
+
+                        <pre><code class="xml"><?php include_once('examples/buildjdf.php'); ?></code></pre>
 
                     </section>
 
@@ -25,7 +49,7 @@ include('inc/header.php');
 
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <h3>Quick Jump</h3>
 
@@ -35,4 +59,4 @@ include('inc/header.php');
 
         </div>
     </div>
-<?php include('inc/footer.php'); ?>
+<?php include_once('inc/footer.php'); ?>

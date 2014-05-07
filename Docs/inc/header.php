@@ -1,5 +1,5 @@
 <?php
-    include('inc/lang.php');
+    include_once('inc/lang.php');
     // Set page title to a default if not set when included
     if (!isset($pageTitle)) throw new Exception('Page title not set.');
 ?>
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5"><h1><a href="index.php"><?php echo $libraryTitle; ?></a></h1></div>
-            <div class="col-sm-7"><?php include('inc/nav.php'); ?></div>
+            <div class="col-sm-7"><?php include_once('inc/nav.php'); ?></div>
         </div>
 
     </div>
