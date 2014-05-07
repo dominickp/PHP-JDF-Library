@@ -1,6 +1,6 @@
 <?php
 
-include 'parameters.php';
+//include 'parameters.php';
 
 class JDF
 {
@@ -151,7 +151,7 @@ class JDF
         $LayoutPreparationParamsLink->addAttribute("Usage", "Input");
     }
 
-    public function setFile($LocalFile, $RunListID = 'RunList_1', $Status = 'Available')
+    public function setFile($LocalFile, $ExternalDirectory, $RunListID = 'RunList_1', $Status = 'Available')
     {
         $RunList = $this->ResourcePool->addChild("RunList");
         $RunList->addAttribute("ID", $RunListID);
@@ -169,8 +169,9 @@ class JDF
         finfo_close($FileInfo);
         $FileSpec->addAttribute("MimeType", $MIMEType);
 
-        $URL = $this->FileDirectory . basename($LocalFile);
-        $FileSpec->addAttribute("URL", $URL);
+        $FileName = basename($LocalFile);
+        $URL = $ExternalDirectory;
+        $FileSpec->addAttribute("URL", $URL.$FileName);
 
         // Update the link pool
         $RunListLink = $this->ResourceLinkPool->addChild("RunListLink");
@@ -236,5 +237,11 @@ class JDF
         $this->ResourceLinkPool = $this->JDFInitialize->addChild("ResourceLinkPool");
     }
 
+
+    public function asXML(){
+
+        return $this->JDFInitialize->asXML();
+
+    }
 
 }

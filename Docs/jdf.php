@@ -19,7 +19,7 @@ include('inc/header.php');
                         <h4 id="set_file">setFile()</h4>
 
                         <p>Allow the class to analyze the local file you're building the JDF for.</p>
-                        <pre>string setFile(string $localFileLocation [, string $runListID [, string $status ]])</pre>
+                        <pre>string setFile(string $localFileLocation, string $externalDirectory [, string $runListID [, string $status ]])</pre>
                         <pre><code class="php">$URL = $JDF->setFile('files/my_job.pdf');</code></pre>
 
                     </section>

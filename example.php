@@ -1,6 +1,6 @@
 <?php
 
-require 'JDF/Container.php';
+require 'Class/Container.php';
 
 include 'parameters.php'; // Include the parameters
 #include 'JDF/PHPJDFLibrary.php'; // Include the JDF class
@@ -16,7 +16,7 @@ include 'parameters.php'; // Include the parameters
 $MyFile = 'example_image.jpg';
 
 // Create the JDF Object. Job name and JDF type required.
-$PHPJDFLibrary = new PHPJDFLibrary();
+$PHPJDFLibrary = new Container();
 
 $JDF = $PHPJDFLibrary->getJDF('MyTestJDF', 'DigitalPrinting', 100);
 

@@ -1,6 +1,6 @@
 <?php
 
-include 'parameters.php';
+//include 'parameters.php';
 
 class JMF
 {

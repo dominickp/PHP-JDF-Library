@@ -2,6 +2,7 @@
 
 require 'JDF.php';
 require 'JMF.php';
+require 'Manager.php';
 
 
 class Container{
@@ -18,6 +19,13 @@ class Container{
         $JMF = new JMF();
 
         return $JMF;
+    }
+
+    public function getManager(){
+
+        $Manager = new Manager();
+
+        return $Manager;
     }
 
 }
