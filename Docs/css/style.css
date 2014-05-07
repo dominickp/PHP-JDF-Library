@@ -53,3 +53,26 @@ section {
     margin-bottom: 25px;
     margin-top: 25px;
 }
+.hljs, nav.navbar {
+    background-image: url('../img/escheresque_ste.png');
+}
+.navbar-inverse .navbar-nav>.active>a{
+    background-color:rgba(0,0,0,0.3);
+}
+.navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus{
+    color: #72d29b;
+    background-color:rgba(0,0,0,0.5);
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
+    color: #72d29b;
+}
+ul.nav-stacked{
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+ul.nav-stacked li{
+    border-bottom:1px solid #CCC;
+}
+ul.nav-stacked li:last-child{
+    border-bottom:0;
+}
