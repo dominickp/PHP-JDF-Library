@@ -8,7 +8,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="php, jdf, jmf, indigo, job, definition, format, automation, workflow" />
+    <meta name="description" content="PHP JDF Library is a collection of PHP classes made to create and send JDF and JMF." />
+    <meta name="author" content="Dominick Peluso" />
     <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
     <title><?php echo $libraryTitle . ': ' . $pageTitle; ?></title>
 
     <!-- Bootstrap -->
