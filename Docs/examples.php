@@ -3,7 +3,7 @@ $pageTitle = 'Code Examples';
 include_once('inc/header.php');
 ?>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="row">
 
                 <div class="col-md-12">
@@ -22,7 +22,7 @@ include_once('inc/header.php');
     This script builds a basic JDF and displays it as raw XML
 */
 
-require('../../Class/Container.php'); // Include the container class
+require('Class/Container.php'); // Include the container class
 
 $Container = new Container(); // Get Container object
 
@@ -48,15 +48,6 @@ print_r($MyXML);</code></pre>
                 </div>
 
             </div>
-        </div>
-        <div class="col-md-3">
-
-            <h3>Quick Jump</h3>
-
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#load">Placeholder</a></li>
-            </ul>
-
         </div>
     </div>
 <?php include_once('inc/footer.php'); ?>
