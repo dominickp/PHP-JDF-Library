@@ -6,7 +6,6 @@
                 <div class="col-sm-3">
                     <h4>Documentation</h4>
                     <ul>
-                        <li><a href="index.php">Home</a></li>
                         <li><a href="container_usage.php">Container</a></li>
                         <li><a href="jdf_usage.php">JDF</a></li>
                         <li><a href="jmf_usage.php">JMF</a></li>
@@ -15,9 +14,16 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
+                    <h4>Usage</h4>
+                    <ul>
+                        <li><a href="examples.php">Code Examples</a></li>
+                        <li><a href="generator.php">JDF Generator</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <h4>Contribute</h4>
                     <ul>
-                        <li><a href="<?php echo $libraryGitHubURL; ?>"><i class="fa fa-github-alt"></i> GitHub Project</a></li>
+                        <li><a href="<?php echo $libraryGitHubURL; ?>" target="_blank"><i class="fa fa-github-alt"></i> GitHub Project</a></li>
                     </ul>
                 </div>
             </div>
