@@ -1,6 +1,9 @@
 /* amore come dolore */
+
+html,body{
+    height: 100%;
+}
 header{
-	background-image:url('../img/office.png');
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 header h1{
@@ -19,8 +22,34 @@ header h1 a:hover{
 	color: #FFF;
 	text-decoration:none;
 }
+footer{
+    color: #999;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+footer a{
+    color: #999;
+}
+footer a:hover{
+    color: #72d29b;
+    text-decoration: none;
+}
+footer h4{
+    font-family: 'Doppio One', 'sans-serif';
+    color: #72d29b;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+footer ul{
+    list-style: none;
+    padding-left: 2px;
+}
 body{
-	background-image:url('../img/fabric_of_squares_gray.png');
+    background-image:url('../img/office.png');
+
+}
+#content_wrapper{
+    background-image:url('../img/fabric_of_squares_gray.png');
+    padding-bottom: 20px;
 }
 h1,h2,h3{
 	font-family: 'Doppio One', 'sans-serif';

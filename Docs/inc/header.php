@@ -38,4 +38,5 @@
 
     </div>
 </header>
-<div class="container">
+<div id="content_wrapper">
+    <div class="container">
