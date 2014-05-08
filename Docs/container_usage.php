@@ -38,13 +38,14 @@ $Container = new Container();</code></pre>
 
                         <ul>
                             <li>The two required parameters are job name and process name, both as strings.</li>
-                            <li>Valid processes are one of the following:</li>
-                            <ul>
-                                <li>Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting,
-                                    PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation.
-                                    RIPing, WebPrinting
-                                </li>
-                            </ul>
+                            <li>Valid processes are one of the following:
+                                <ul>
+                                    <li>Binding, Cutting, DigitalPrinting, FinalImaging, FinalRIPing, Folding, Newsprinting,
+                                        PostPress, PrePress, Printing, ProofImaging, ProofRIPing, PublishingPreparation.
+                                        RIPing, WebPrinting
+                                    </li>
+                                </ul>
+                            </li>
                             <li>The third parameter is quantity. Leaving this blank will default to 1.</li>
                         </ul>
 
