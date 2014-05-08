@@ -13,6 +13,7 @@ $jobType = $_POST['job_type'];
 $quantity = $_POST['quantity'];
 $location = $_POST['location'];
 $substrate = $_POST['substrate'];
+$comment = $_POST['comment'];
 
 
 $Container = new Container(); // Get Container object
@@ -21,6 +22,7 @@ $JDF = $Container->getJDF($jobName, $jobType, $quantity); // Get the JDF object
 $JDF->setFile('../examples/input/example_image.jpg', $location); // Set the input file and output directory
 
 if($substrate) $JDF->setMedia($substrate); // Set paper
+if($comment) $JDF->setComment($comment); // Set comment
 
 $JDF->setLayoutPreparationParams('TwoSidedFlipY', 'urn:8_up_postcards'); // Set imposition settings
 

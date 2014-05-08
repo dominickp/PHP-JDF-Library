@@ -20,7 +20,7 @@ include_once('inc/header.php');
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label for="job_name">Job Name</label>
-                                        <input type="text" class="form-control" id="job_name" name="job_name" placeholder="Business cards" required="required">
+                                        <input type="text" class="form-control" id="job_name" name="job_name" placeholder="Business cards" required="required" value="My business cards">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -61,8 +61,14 @@ include_once('inc/header.php');
                                 <label for="substrate">Substrate</label>
                                 <input type="text" class="form-control" id="substrate" name="substrate" placeholder="100# Gloss Cover">
                             </div>
+
+                            <div class="form-group">
+                                <label for="comment">Comment</label>
+                                <input type="text" class="form-control" id="comment" name="comment" placeholder="Check for color">
+                            </div>
+
                             <hr>
-                            <button type="submit" id="generate_btn" class="btn btn-success">Generate!</button>
+                            <button type="submit" id="generate_btn" class="btn btn-success"><i class="fa fa-star-o"></i> Generate!</button>
 
                         </form>
 
