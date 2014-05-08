@@ -16,7 +16,7 @@ include_once('inc/header.php');
                     <section>
 
                         <h3>Build a JDF for a DFE/Indigo Hotfolder</h3>
-
+                        <h4>Example Code</h4>
                         <pre><code class="php">&lt;?php
 /*
     This script builds a basic JDF and displays it as raw XML
