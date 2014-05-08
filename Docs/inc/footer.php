@@ -3,8 +3,8 @@
 	<footer>
 		<div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <h4>Navigation</h4>
+                <div class="col-sm-3">
+                    <h4>Documentation</h4>
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="container_usage.php">Container</a></li>
@@ -12,6 +12,12 @@
                         <li><a href="jmf_usage.php">JMF</a></li>
                         <li><a href="manager_usage.php">Manager</a></li>
                         <li><a href="examples.php">Examples</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Contribute</h4>
+                    <ul>
+                        <li><a href="<?php echo $libraryGitHubURL; ?>"><i class="fa fa-github-alt"></i> GitHub Project</a></li>
                     </ul>
                 </div>
             </div>
