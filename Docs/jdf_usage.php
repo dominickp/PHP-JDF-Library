@@ -77,11 +77,12 @@ include('inc/header.php');
                         <pre><code class="php">$JDF->setLayoutPreparationParams('TwoSidedFlipY', 'urn:8_up_postcards');</code></pre>
 
                         <ul>
-                            <li>Tumble setting must be one of the following</li>
-                            <ul>
-                                <li>OneSidedBackFlipX, OneSidedBackFlipY, OneSidedFront, TwoSidedFlipX, TwoSidedFlipY
-                                </li>
-                            </ul>
+                            <li>Tumble setting must be one of the following
+                                <ul>
+                                    <li>OneSidedBackFlipX, OneSidedBackFlipY, OneSidedFront, TwoSidedFlipX, TwoSidedFlipY
+                                    </li>
+                                </ul>
+                            </li>
                             <li>The external imposition template is an optional parameter and it must be the complete
                                 location of the imposition template, where the print device/DFE can locate it.
                             </li>
