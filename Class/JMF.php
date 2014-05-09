@@ -7,6 +7,8 @@ class JMF
 
     public $JMFInitialize;
 
+    public $importedJMF;
+
     public $Query;
 
     public function __construct()
@@ -30,7 +32,7 @@ class JMF
 
     }
 
-    public function getStatus($detailed = false)
+    public function requestStatus($detailed = false)
     {
 
         if($detailed){
@@ -48,7 +50,11 @@ class JMF
         $StatusQuParams->addAttribute('DeviceDetails', $DeviceDetails);
     }
 
+    public function load($XML){
 
+        $this->importedJMF = new SimpleXMLElement($XML);
+
+    }
 
     public function asXML(){
 

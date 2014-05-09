@@ -17,11 +17,11 @@ include('inc/header.php');
 
                     <section>
 
-                        <h4 id="get_status">getStatus()</h4>
+                        <h4 id="request_status">requestStatus()</h4>
 
                         <p>Allow the class to analyze the local file you're building the JDF for.</p>
-                        <pre>void getStatus([bool $detailed])</pre>
-                        <pre><code class="php">$JMF->getStatus(true);</code></pre>
+                        <pre>void requestStatus([bool $detailed])</pre>
+                        <pre><code class="php">$JMF->requestStatus(true);</code></pre>
 
                         <ul>
                             <li>Determine if you want to send the detailed or the basic status call by sending a true or false for the $detailed parameter. Default is false.</li>
@@ -38,7 +38,7 @@ include('inc/header.php');
             <h3>Quick Jump</h3>
 
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="#get_status">getStatus()</a></li>
+                <li><a href="#request_status">requestStatus()</a></li>
             </ul>
 
         </div>
