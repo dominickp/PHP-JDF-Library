@@ -14,9 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "ext-curl": "*",
-        "ext-fileinfo": "*"
+        "php": ">=5.3.0"
     },
     "autoload": {
         "psr-0": {
