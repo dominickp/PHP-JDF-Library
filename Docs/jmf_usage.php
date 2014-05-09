@@ -29,6 +29,16 @@ include('inc/header.php');
 
                     </section>
 
+                    <section>
+
+                        <h4 id="request_status">requestQueueStatus()</h4>
+
+                        <p>Shows the jobs on the queue for the particular device.</p>
+                        <pre>void requestQueueStatus()</pre>
+                        <pre><code class="php">$JMF->requestQueueStatus(true);</code></pre>
+
+                    </section>
+
                     <h3>Interpret a JMF Response</h3>
 
                     <section>
@@ -42,11 +52,11 @@ include('inc/header.php');
                     </section>
                     <section>
 
-                        <h4 id="request_status">getDeviceInfo()</h4>
+                        <h4 id="request_status">getResponse()</h4>
 
-                        <p>Get the deviceInfo object. This includes the device condition, counters, status, and activity of the device.</p>
-                        <pre>object getDeviceInfo(string $XML)</pre>
-                        <pre><code class="php">$DeviceInfo = $JMF->getDeviceInfo($XML);</code></pre>
+                        <p>Get the response as an object.</p>
+                        <pre>object getResponse(string $XML)</pre>
+                        <pre><code class="php">$responseObject = $JMF->getResponse($XML);</code></pre>
 
                     </section>
 

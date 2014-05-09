@@ -50,25 +50,27 @@ class JMF
         $StatusQuParams->addAttribute('DeviceDetails', $DeviceDetails);
     }
 
+    public function requestQueueStatus(){
+
+        $this->Query = $this->JMFInitialize->addChild("Query");
+
+        $this->Query->addAttribute("Type", "QueueStatus");
+        $this->Query->addAttribute("xsi:type", "QueryQueueStatus", "http://www.w3.org/2001/XMLSchema-instance");
+        $this->Query->addAttribute("ID", time());
+
+    }
+
     public function load($XML){
 
         $this->importedJMF = new SimpleXMLElement($XML);
 
     }
 
-    public function getDeviceInfo(){
+    public function getResponse(){
 
-        $attributes = $this->importedJMF->Response->DeviceInfo->attributes();
+        $response = $this->importedJMF->Response;
 
-        $deviceInfo = new stdClass();
-        $deviceInfo->CounterUnit = (string) $attributes->CounterUnit[0];
-        $deviceInfo->DeviceCondition = (string) $attributes->DeviceCondition[0];
-        $deviceInfo->DeviceID = (string) $attributes->DeviceID[0];
-        $deviceInfo->DeviceStatus = (string) $attributes->DeviceStatus[0];
-        $deviceInfo->ProductionCounter = (string) $attributes->ProductionCounter[0];
-        $deviceInfo->StatusDetails = (string) $attributes->StatusDetails[0];
-
-        return $deviceInfo;
+        return $response;
 
     }
 
