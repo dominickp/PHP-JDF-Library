@@ -48,4 +48,12 @@ class JMF
         $StatusQuParams->addAttribute('DeviceDetails', $DeviceDetails);
     }
 
+
+
+    public function asXML(){
+
+        return $this->JMFInitialize->asXML();
+
+    }
+
 }
