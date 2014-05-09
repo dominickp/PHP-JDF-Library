@@ -12,7 +12,7 @@ $Container = new Container();
 
 $JMF = $Container->getJMF();
 
-$JMF->getStatus(true);
+$JMF->requestStatus(true);
 
 $Manager = $Container->getManager();
 
@@ -20,6 +20,10 @@ $Manager->load($JMF);
 
 $response = $Manager->postXML($device5500);
 
-header("Content-type: text/xml; charset=utf-8");
+$ResponseJMF = $Container->getJMF();
+$ResponseJMF->load($response);
+$DeviceInfo = $ResponseJMF->getDeviceInfo();
 
-print_r($response);
+//header("Content-type: text/xml; charset=utf-8");
+
+print_r($DeviceInfo);

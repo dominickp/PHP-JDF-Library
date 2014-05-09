@@ -13,7 +13,7 @@ include('inc/header.php');
                         The JMF object allows you to create a JDF message to a print device to obtain information or send instructions.
                     </p>
 
-                    <h3>Get basic status information</h3>
+                    <h3>Build a JMF Request</h3>
 
                     <section>
 
@@ -26,6 +26,27 @@ include('inc/header.php');
                         <ul>
                             <li>Determine if you want to send the detailed or the basic status call by sending a true or false for the $detailed parameter. Default is false.</li>
                         </ul>
+
+                    </section>
+
+                    <h3>Interpret a JMF Response</h3>
+
+                    <section>
+
+                        <h4 id="request_status">load()</h4>
+
+                        <p>Load a JMF (as an XML string) into the class to easily get information out of it.</p>
+                        <pre>void load(string $XML)</pre>
+                        <pre><code class="php">$JMF->load($XML);</code></pre>
+
+                    </section>
+                    <section>
+
+                        <h4 id="request_status">getDeviceInfo()</h4>
+
+                        <p>Get the deviceInfo object. This includes the device condition, counters, status, and activity of the device.</p>
+                        <pre>object getDeviceInfo(string $XML)</pre>
+                        <pre><code class="php">$DeviceInfo = $JMF->getDeviceInfo($XML);</code></pre>
 
                     </section>
 
