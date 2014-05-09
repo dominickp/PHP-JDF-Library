@@ -52,6 +52,12 @@ print_r($MyXML);</code></pre>
 header("Content-type: text/xml; charset=utf-8");
 print_r($Response);</code></pre>
 
+                        <ul>
+                            <li>The URL scheme for a DFE is: "http://[DFE IP]:8080/prodflow/jmf/dfe".</li>
+                            <li>If you have other devices connected to your DFE, you can access those by replacing "dfe" with the device IP: "http://[DFE IP]:8080/prodflow/jmf/[DEVICE IP]"</li>
+                        </ul>
+
+
                     </section>
 
                 </div>
