@@ -1,4 +1,4 @@
-# PHP-JDF-Library
+# PHP-JDF-Library 
 
 This is intended to be a collection of PHP classes which can be used to create, interpret, and send JDF and JMF files, primarily for HP's implimentation. The JDF spec is very broad, so for now I'm going to focus my development efforts on JDFs used by HP Indigos and the HP Digital Front End (DFE).
 
