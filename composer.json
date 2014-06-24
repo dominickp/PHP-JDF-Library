@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Monolog": "src"
+            "DominickPeluso\\JdfLibraryBundle": "src\\Bundle\\JdfLibraryBundle"
         }
     }
 }
