@@ -1,0 +1,7 @@
+parameters:
+#    jdf_library.example.class: DominickPeluso\JdfLibraryBundle\Example
+
+services:
+#    jdf_library.example:
+#        class: %jdf_library.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
