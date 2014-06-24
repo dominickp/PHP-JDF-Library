@@ -1,6 +1,6 @@
 {
     "name": "dominick-peluso/php-jdf-library",
-    "type": "library",
+    "symfony-bundle",
     "description": "JDF/JMF library for PHP",
     "keywords": ["jdf","jmf"],
     "homepage": "https://github.com/dominickp/PHP-JDF-Library",
