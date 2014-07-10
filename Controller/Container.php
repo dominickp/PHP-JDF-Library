@@ -1,9 +1,11 @@
 <?php
 
-require_once 'JDF.php';
-require_once 'JMF.php';
-require_once 'Manager.php';
+namespace DominickPeluso\JdfLibraryBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use DominickPeluso\JdfLibraryBundle\Controller\JDF;
+use DominickPeluso\JdfLibraryBundle\Controller\JMF;
+use DominickPeluso\JdfLibraryBundle\Controller\Manager;
 
 class Container{
 

@@ -1,6 +1,6 @@
 <?php
 
-//include 'parameters.php';
+namespace DominickPeluso\JdfLibraryBundle\Controller;
 
 class JMF
 {

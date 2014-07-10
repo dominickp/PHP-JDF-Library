@@ -1,5 +1,7 @@
 <?php
 
+namespace DominickPeluso\JdfLibraryBundle\Controller;
+
 class Manager
 {
 
