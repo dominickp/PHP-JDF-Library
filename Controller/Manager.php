@@ -16,7 +16,7 @@ class Manager
     public function postXML($IDP_Worker){
 
         // Make sure cURL is enabled
-        if(!function_exists('curl_version')) throw new Exception("cURL must be installed for sendJMF() to work.");
+        if(!function_exists('curl_version')) throw new \Exception("cURL must be installed for sendJMF() to work.");
 
         $ch = curl_init($IDP_Worker);
 

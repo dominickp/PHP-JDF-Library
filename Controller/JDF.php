@@ -34,14 +34,14 @@ class JDF
             'Binding', 'Cutting', 'DigitalPrinting', 'FinalImaging', 'FinalRIPing', 'Folding', 'Newsprinting', 'PostPress', 'PrePress', 'Printing', 'ProofImaging', 'ProofRIPing', 'PublishingPreparation', 'RIPing', 'WebPrinting'
         );
 
-        if (!in_array($Types, $AcceptableTypes)) throw new Exception("[$Types] is not an acceptable JDF type.");
+        if (!in_array($Types, $AcceptableTypes)) throw new \Exception("[$Types] is not an acceptable JDF type.");
 
         $Version = '1.3';
 
         // Initialize the JDF
         $JDFStart = $XMLEncoding . '<JDF Type="' . $JDFType . '" xmlns="' . $XMLNS . '" ID="' . $Id . '" Status="' . $Status . '" JobPartID="' . $JobPartId . '" Version="' . $Version . '" Types="' . $Types . '" DescriptiveName="' . $DescriptiveName . '"></JDF>';
 
-        $this->JDFInitialize = new SimpleXMLElement($JDFStart, LIBXML_NOEMPTYTAG);
+        $this->JDFInitialize = new \SimpleXMLElement($JDFStart, LIBXML_NOEMPTYTAG);
 
         // Add some information about where this JDF came from
         $AuditPool = $this->JDFInitialize->addChild('AuditPool');
@@ -132,7 +132,7 @@ class JDF
     {
         // Check to make sure the selected Sides variable is an OK JDF value
         $AcceptableTypes = array('OneSidedBackFlipX', 'OneSidedBackFlipY', 'OneSidedFront', 'TwoSidedFlipX', 'TwoSidedFlipY');
-        if (!in_array($Sides, $AcceptableTypes)) throw new Exception("[$Sides] is not an acceptable JDF EnumSides value.");
+        if (!in_array($Sides, $AcceptableTypes)) throw new \Exception("[$Sides] is not an acceptable JDF EnumSides value.");
 
         $LayoutPreparationParams = $this->ResourcePool->addChild("LayoutPreparationParams");
         $LayoutPreparationParams->addAttribute("Class", $Class);
@@ -163,7 +163,7 @@ class JDF
         $FileSpec = $LayoutElement->addChild("FileSpec");
 
         // Get MIME type of file passed through
-        if (!file_exists($LocalFile)) throw new Exception("[$LocalFile] cannot be found and therefore the MIME type cannot be determined.");
+        if (!file_exists($LocalFile)) throw new \Exception("[$LocalFile] cannot be found and therefore the MIME type cannot be determined.");
         $FileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $MIMEType = finfo_file($FileInfo, $LocalFile);
         finfo_close($FileInfo);
@@ -211,7 +211,7 @@ class JDF
             $streamingBool = 'Off';
         }
 
-        if(!is_int($streamingThreshold)) throw new Exception("[hpPrintWhileLoadThreshold] MUST be an integer.");
+        if(!is_int($streamingThreshold)) throw new \Exception("[hpPrintWhileLoadThreshold] MUST be an integer.");
 
         // Set the streaming on or off
         $hpPrintWhileLoadEnable = $this->ResourcePool->addChild("GeneralID");

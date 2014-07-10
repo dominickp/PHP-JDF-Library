@@ -25,7 +25,7 @@ class JMF
         // Initialize the JMF
         $JMFStart = $XMLEncoding . '<JMF xmlns="' . $XMLNS . '" xmlns:xsi="' . $XMLSXSI . '" SenderID="' . $SenderID . '" Version="' . $Version . '"></JMF>';
 
-        $this->JMFInitialize = new SimpleXMLElement($JMFStart, LIBXML_NOEMPTYTAG);
+        $this->JMFInitialize = new \SimpleXMLElement($JMFStart, LIBXML_NOEMPTYTAG);
 
         // Namespace
         $this->JMFInitialize->registerXPathNamespace('xsi', $XMLSXSI);
@@ -62,7 +62,7 @@ class JMF
 
     public function load($XML){
 
-        $this->importedJMF = new SimpleXMLElement($XML);
+        $this->importedJMF = new \SimpleXMLElement($XML);
 
     }
 
