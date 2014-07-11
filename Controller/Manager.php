@@ -73,8 +73,8 @@ class Manager
                 'Content-type: application/vnd.cip4-jmf+xml'
             ));
 
-            $curlHandles[$key] =  $ch;
-            curl_multi_add_handle($mh,$ch);
+            $curlHandles[$key] = $ch;
+            curl_multi_add_handle($mh, $ch);
 
         }
 
@@ -82,8 +82,7 @@ class Manager
         //execute the handles
         do {
             $mrc = curl_multi_exec($mh, $active);
-        }
-        while ($mrc == CURLM_CALL_MULTI_PERFORM);
+        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
 
         while ($active && $mrc == CURLM_OK) {
             if (curl_multi_select($mh) != -1) {
@@ -93,18 +92,21 @@ class Manager
             }
         }
 
+
+
         $returnArray = array();
 
-        /* This is the relevant bit */
         // iterate through the handles and get your content
         foreach ($curlHandles as $key => $ch) {
             $response = curl_multi_getcontent($ch); // get the content
+
+            $returnArray[$key] = $response;
+
             // do what you want with the HTML
             curl_multi_remove_handle($mh, $ch); // remove the handle (assuming  you are done with it);
 
-            $returnArray[$key] = $response;
         }
-        /* End of the relevant bit */
+
 
         curl_multi_close($mh); // close the curl multi handler
 
