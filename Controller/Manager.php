@@ -18,6 +18,11 @@ class Manager
 
     public function loadMulti($array)
     {
+        foreach($array as $post)
+        {
+            if(empty($post['url']) || empty($post['data'])) throw new \Exception("'url' and 'data' must be set for each array item in loadmulti()");
+        }
+
         $this->multiSimplyXMLObjects = $array;
     }
 
@@ -49,7 +54,7 @@ class Manager
 
     }
 
-    public function multiPostXML($IDP_Worker)
+    public function multiPostXML()
     {
         $this->checkCurlInstalled();
 
@@ -57,12 +62,12 @@ class Manager
 
         $curlHandles = array();
 
-        foreach($this->multiSimplyXMLObjects as $key => $SimplyXMLObject)
+        foreach($this->multiSimplyXMLObjects as $key => $post)
         {
-            $ch = curl_init($IDP_Worker);
+            $ch = curl_init($post['url']);
 
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $SimplyXMLObject->asXML());
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post['data']->asXML());
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'Content-type: application/vnd.cip4-jmf+xml'
