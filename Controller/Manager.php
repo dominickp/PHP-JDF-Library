@@ -46,6 +46,11 @@ class Manager
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-type: application/vnd.cip4-jmf+xml'
         ));
+
+        // Set timeouts
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 200);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+
         $result = curl_exec($ch);
 
         curl_close($ch);
@@ -72,6 +77,10 @@ class Manager
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'Content-type: application/vnd.cip4-jmf+xml'
             ));
+
+            // Set timeouts
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 200);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 
             $curlHandles[$key] = $ch;
             curl_multi_add_handle($mh, $ch);
