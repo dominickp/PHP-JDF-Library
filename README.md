@@ -5,6 +5,8 @@ This is intended to be a collection of PHP classes which can be used to create, 
 ## How to use
 [Documentation](http://jdf.dominick.p.elu.so/)
 
+## Check out JMF-Subscription: https://github.com/dominickp/JMF-Subscription
+
 ### Example Output (as of 2/15)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
